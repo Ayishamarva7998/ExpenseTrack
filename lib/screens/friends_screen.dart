@@ -38,15 +38,20 @@ class friends_screen extends StatelessWidget {
                 height: 55,
                 width: 360,
                
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 176, 181, 181),),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Color.fromARGB(255, 176, 181, 181),),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('Add Group +',style: TextStyle(fontSize: 20),)),
 
               ),
               SizedBox(height: 20,),
               Container(
                 height: 55,
                 width: 360,
-               
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 22, 140, 124),),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Color.fromARGB(255, 22, 140, 124),),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('Add Expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
 
               )
           ],

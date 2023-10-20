@@ -44,7 +44,6 @@ class loginpage extends StatelessWidget {
            Container(
             height: 50,
             width: 350,
-           
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 7, 179, 156),),
             child: Align(alignment: Alignment.center,
               child: Text('login',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),)),

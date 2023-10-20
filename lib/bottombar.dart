@@ -20,7 +20,7 @@ final pages = [
  groups_screen(),
  friends_screen(),
  chart_screen(),
- settings_screen()
+ settings()
   
 ];
 
