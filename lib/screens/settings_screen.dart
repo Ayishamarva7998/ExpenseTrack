@@ -37,7 +37,7 @@ class settings extends StatelessWidget {
             elevation: 2,
             child: Container(height: 60,width: 360,
             child: Center(
-              child: ListTile(leading: Icon(Icons.restart_alt),title: Text("Terms and conditions"),
+              child: ListTile(leading: Icon(Icons.restart_alt),title: Text("Terms and Conditions"),
               trailing: Icon(Icons.arrow_forward_ios,),),
             ),),
           ),
@@ -61,4 +61,4 @@ class settings extends StatelessWidget {
       ),
     );
   }
-}
+} 
