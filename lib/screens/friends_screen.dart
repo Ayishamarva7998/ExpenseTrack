@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/screens/2.1.dart';
 
 class friends_screen extends StatelessWidget {
   const friends_screen({super.key});
@@ -12,10 +13,12 @@ class friends_screen extends StatelessWidget {
       children: [
         Row(
           children: [
-            SizedBox(width: 320,),
-            Icon(Icons.search),
-            SizedBox(width: 20,),
-            Icon(Icons.person_add_alt)
+            SizedBox(width: 280,),
+        IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+            SizedBox(width: 10,),
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => addcontact(),));
+          }, icon: Icon(Icons.person))
           ],
         
         ),
@@ -47,18 +50,29 @@ class friends_screen extends StatelessWidget {
       SizedBox(width: 10),
       CircleAvatar(radius: 30, backgroundColor: Colors.grey),
       SizedBox(width: 30),
-      Column(
+      Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          Text(
+          Column(
+            children: [
+              Align(alignment: Alignment.topRight,
+                child: Text(
+                  name,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ),
+               Text(
             'Number: $number',
             style: TextStyle(fontSize: 16),
             
           ),
+            ],
+          ),
+          SizedBox(width: 60,),
+          Icon(Icons.edit),
+          Icon(Icons.delete)
+          
+         
           
         ],
       ),
