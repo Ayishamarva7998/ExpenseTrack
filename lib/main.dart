@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/loginpage.dart';
 import 'package:splitwise_app/screens/2.1.dart';
+import 'package:splitwise_app/screens/firstgroup.dart';
 
 void main() {
   runApp(const MyApp());

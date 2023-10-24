@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/screens/friends_screen.dart';
 
 class addcontact extends StatelessWidget {
   const addcontact({super.key});
@@ -6,6 +7,12 @@ class addcontact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => friends_screen(),));
+        }, icon: Icon(Icons.arrow_back))
+        
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

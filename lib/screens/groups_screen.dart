@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/screens/firstgroup.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 
 
@@ -14,7 +15,10 @@ class groups_screen extends StatelessWidget {
             children: [
               Image.asset('assets/billss.jpg'),
               SizedBox(height: 100,),
-              ListTile(leading: Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('You owe 205.00 ',),),
+              GestureDetector(onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => firstgroup(),));
+              },
+                child: ListTile(leading: Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('You owe 205.00 ',),)),
               Divider(thickness: 5,),
                ListTile(leading: Text('Amigoz',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('They owe you 1120.00 '),),
                Divider(thickness: 5,),

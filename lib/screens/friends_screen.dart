@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/screens/2.1.dart';
+import 'package:splitwise_app/screens/groups_screen.dart';
 
 class friends_screen extends StatelessWidget {
   const friends_screen({super.key});
@@ -7,7 +8,10 @@ class friends_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( backgroundColor: Colors.white,elevation: 0, title: Text('Friends',style: TextStyle(fontWeight: FontWeight.bold,fontSize:26,color: Colors.black ,),),
+      appBar: AppBar(leading:IconButton(onPressed: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => groups_screen(),));
+      }, icon: Icon(Icons.arrow_back)),
+         backgroundColor: const Color.fromARGB(255, 208, 202, 202),elevation: 0, title: Text('Friends',style: TextStyle(fontWeight: FontWeight.bold,fontSize:26,color: Colors.black ,),),
     ),
     body: Column(
       children: [
@@ -39,8 +43,6 @@ class friends_screen extends StatelessWidget {
          SizedBox(height: 20,), 
       ],
     ),
-    
-    
     );
   }
 
@@ -70,10 +72,7 @@ class friends_screen extends StatelessWidget {
           ),
           SizedBox(width: 60,),
           Icon(Icons.edit),
-          Icon(Icons.delete)
-          
-         
-          
+          Icon(Icons.delete) 
         ],
       ),
     ],
