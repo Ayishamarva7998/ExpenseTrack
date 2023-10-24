@@ -3,8 +3,8 @@ import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
-class friends_screen extends StatelessWidget {
-  const friends_screen({super.key});
+class adduser extends StatelessWidget {
+  const adduser({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +71,7 @@ class friends_screen extends StatelessWidget {
           ),
             ],
           ),
-          SizedBox(width: 60,),
-          Icon(Icons.edit),
-          Icon(Icons.delete) 
+         
         ],
       ),
     ],

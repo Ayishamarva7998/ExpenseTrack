@@ -28,11 +28,9 @@ class firstgroup extends StatelessWidget {
               child: Text('Oct 19',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
               SizedBox(height: 20,),
              list(icon:Icons.local_taxi,title: 'Taxi fare',text1: 'Rahma paid 50.00',text2: 'You borrowed',amount: '10.00'),
-             list(icon: Icons.restaurant, title: 'food', text1: 'Arjun paid 654.00', text2: 'You borrowed', amount: '280.00'),
-             list(icon: Icons.shopping_cart, title: 'fgh', text1: 'bn', text2: 'bnm', amount: ' mmmm' )
-
-
-
+             list(icon: Icons.restaurant, title: 'Food', text1: 'Arjun paid 654.00', text2: 'You borrowed', amount: '280.00'),
+             list(icon: Icons.shopping_cart, title: 'Shopping', text1: 'You paid 2549.00', text2: 'You lent', amount: ' 798.00' ),
+             list(icon:Icons.local_cafe, title: 'Tea & Snacks ', text1: 'Ameer paid 160.00', text2: 'You borrowed', amount: '80.00')
         
         ],
         
