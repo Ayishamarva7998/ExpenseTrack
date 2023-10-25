@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
 class firstgroup extends StatelessWidget {
@@ -9,7 +10,7 @@ class firstgroup extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
        leading: IconButton(onPressed: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => groups_screen(),));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) =>bottombar(),));
         
        }, icon: Icon(Icons.arrow_back)),
        backgroundColor: const Color.fromARGB(255, 215, 212, 212),elevation: 0,

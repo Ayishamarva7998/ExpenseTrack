@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 
-class Addexpense extends StatelessWidget {
+class Addexpense extends StatefulWidget {
   const Addexpense({super.key});
 
+  @override
+  State<Addexpense> createState() => _AddexpenseState();
+}
+
+class _AddexpenseState extends State<Addexpense> {
+  String selectedCategory = 'select category';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,20 +20,38 @@ class Addexpense extends StatelessWidget {
       ),
       body:Column (
         children: [
-          Text('Add expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
+          Align(alignment: Alignment.topLeft,
+            child: Text('Add expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),)),
           SizedBox(height:  70,),
           Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
           SizedBox( height: 140),
-          Container(
-            height: 80,
-            width: 200,
-            color: Colors.amber,
-            child: Column(
-              children: [
-                TextField()
-               
-
-              ],
+          Align(
+            child: Container(
+              height: 200,
+              width: 350,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  ListTile(leading: Icon(Icons.description_outlined,size: 40,),title: TextField(),),
+                  ListTile(leading: Icon(Icons.currency_rupee,size: 40,),title: TextField(),
+                  trailing: Icon(Icons.expand_more,color: Colors.white,),),
+                  DropdownButton<String>(items: [
+                    'select category',
+                    'income',
+                    'expense'
+                  ].map((String value){
+                    return DropdownMenuItem<String>(value: value,child: Text(value),);
+                  }).toList(),
+                  onChanged:( String? value) {
+                    setState(() {
+                      selectedCategory = value!;
+                    });
+                   },
+                    value: selectedCategory,
+                  ), 
+                  
+                ],
+              ),
             ),
           )
         ],
