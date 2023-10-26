@@ -17,22 +17,21 @@ class firstgroup extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Align(alignment: Alignment.topLeft,
+          const Align(alignment: Alignment.topLeft,
             child: Text('Tech house',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),)),SizedBox(height: 30,),
-          Align(alignment: Alignment.topRight,
+          const Align(alignment: Alignment.topRight,
             child: Text('Total Income:1069.00',style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)),
-          Align(alignment: Alignment.topRight,
+          const Align(alignment: Alignment.topRight,
             child: Text('Total Expense:120.00',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),)),
             SizedBox(height: 60,),
 
-            Align(alignment: Alignment.topLeft,
+            const Align(alignment: Alignment.topLeft,
               child: Text('Oct 19',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
               SizedBox(height: 20,),
              list(icon:Icons.local_taxi,title: 'Taxi fare',text1: 'Rahma paid 50.00',text2: 'You borrowed',amount: '10.00'),
              list(icon: Icons.restaurant, title: 'Food', text1: 'Arjun paid 654.00', text2: 'You borrowed', amount: '280.00'),
              list(icon: Icons.shopping_cart, title: 'Shopping', text1: 'You paid 2549.00', text2: 'You lent', amount: ' 798.00' ),
              list(icon:Icons.local_cafe, title: 'Tea & Snacks ', text1: 'Ameer paid 160.00', text2: 'You borrowed', amount: '80.00')
-        
         ],
         
       ),
@@ -46,7 +45,7 @@ class firstgroup extends StatelessWidget {
            subtitle: Text(text1),
            trailing: Column(
              children: [
-               Text(text2,style: TextStyle(color: Colors.red
+               Text(text2,style: const TextStyle(color: Colors.red
                ),),
                SizedBox(height: 10,),
                Text(amount,style: TextStyle(color: Colors.red),)

@@ -7,7 +7,7 @@ import 'package:splitwise_app/screens/friends_screen.dart';
 
 class groups_screen extends StatelessWidget {
   const groups_screen({super.key});
-
+//???
   @override
   Widget build(BuildContext context) {
     return SafeArea( 
@@ -37,7 +37,7 @@ class groups_screen extends StatelessWidget {
                     width: 360,
                    
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Color.fromARGB(255, 176, 181, 181),),
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.center,
                       child: Text('Add Group +',style: TextStyle(fontSize: 20),)),
                         
@@ -51,7 +51,7 @@ class groups_screen extends StatelessWidget {
                     height: 55,
                     width: 360,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Color.fromARGB(255, 22, 140, 124),),
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.center,
                       child: Text('Add Expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
                         

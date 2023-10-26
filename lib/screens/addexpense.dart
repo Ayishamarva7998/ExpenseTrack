@@ -20,7 +20,7 @@ class _AddexpenseState extends State<Addexpense> {
       ),
       body:Column (
         children: [
-          Align(alignment: Alignment.topLeft,
+          const Align(alignment: Alignment.topLeft,
             child: Text('Add expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),)),
           SizedBox(height:  70,),
           Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
@@ -33,7 +33,7 @@ class _AddexpenseState extends State<Addexpense> {
               child: Column(
                 children: [
                   ListTile(leading: Icon(Icons.description_outlined,size: 40,),title: TextField(),),
-                  ListTile(leading: Icon(Icons.currency_rupee,size: 40,),title: TextField(),
+                  const ListTile(leading: Icon(Icons.currency_rupee,size: 40,),title: TextField(),
                   trailing: Icon(Icons.expand_more,color: Colors.white,),),
                   DropdownButton<String>(items: [
                     'select category',
