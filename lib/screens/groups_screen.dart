@@ -15,6 +15,7 @@ class groups_screen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
+
               Image.asset('assets/billss.jpg'),
               SizedBox(height: 100,),
               GestureDetector(onTap: () {

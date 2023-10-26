@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/screens/about.dart';
+import 'package:splitwise_app/screens/terms.dart';
 
 class settings extends StatelessWidget {
   const settings({super.key});
@@ -20,25 +22,34 @@ class settings extends StatelessWidget {
             elevation: 2,
             child: Container(height: 60,width: 360,
             child: Center(
-              child: ListTile(leading: Icon(Icons.info),title: Text("About us"),
-              trailing: Icon(Icons.arrow_forward_ios),),
-            ),),
-          ),SizedBox(height: 20,),
-            Material(
-            elevation: 2,
-            child: Container(height: 60,width: 360,
-            child: Center(
-              child: ListTile(leading: Icon(Icons.policy),title: Text("Privacy and Policy"),
-              trailing: Icon(Icons.arrow_forward_ios),),
-            ),),
-          ),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => about(),));
+                },
+                child: ListTile(leading: Icon(Icons.info),title: Text("About us"),
+                trailing: Icon(Icons.arrow_forward_ios),),
+              ),
+            ),),),
+          // ),SizedBox(height: 20,),
+          //   Material(
+          //   elevation: 2,
+          //   child: Container(height: 60,width: 360,
+          //   child: Center(
+          //     child: ListTile(leading: Icon(Icons.policy),title: Text("Privacy and Policy"),
+          //     trailing: Icon(Icons.arrow_forward_ios),),
+          //   ),),
+          // ),
           SizedBox(height: 20,),
            Material( 
             elevation: 2,
             child: Container(height: 60,width: 360,
             child: Center(
-              child: ListTile(leading: Icon(Icons.restart_alt),title: Text("Terms and Conditions"),
-              trailing: Icon(Icons.arrow_forward_ios,),),
+              child: GestureDetector(onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => terms(),));
+              },
+                child: ListTile(leading: Icon(Icons.description),title: Text("Terms and Conditions"),
+                trailing: Icon(Icons.arrow_forward_ios,),),
+              ),
             ),),
           ),
           SizedBox(height: 20,),
@@ -46,7 +57,7 @@ class settings extends StatelessWidget {
             elevation: 2,
             child: Container(height: 60,width: 360,
             child: Center(
-              child: ListTile(leading: Icon(Icons.info),title: Text("Restart"),
+              child: ListTile(leading: Icon(Icons.restart_alt),title: Text("Restart"),
               trailing: Icon(Icons.arrow_forward_ios),),
             ),),
           ),

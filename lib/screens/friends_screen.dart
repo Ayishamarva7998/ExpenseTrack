@@ -27,7 +27,7 @@ class friends_screen extends StatelessWidget {
           ],
         
         ),
-        SizedBox(height: 50,),
+        SizedBox(height: 40,),
         contactlist(name: 'Adil Rusfeed P',number: '7736348522'),
         SizedBox(height: 20,),
         contactlist(name: 'Arjun P.K',number: '7736348522'),
@@ -53,28 +53,33 @@ class friends_screen extends StatelessWidget {
       SizedBox(width: 10),
       CircleAvatar(radius: 30, backgroundColor: Colors.grey),
       SizedBox(width: 30),
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            children: [
-              Align(alignment: Alignment.topRight,
-                child: Text(
-                  name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+      SingleChildScrollView(scrollDirection: Axis.horizontal,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              children: [
+                Align(alignment: Alignment.topRight,
+                  child: Align(alignment: Alignment.topRight,
+                    child: Text(
+                      name,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ),
                 ),
-              ),
-               Text(
-            'Number: $number',
-            style: TextStyle(fontSize: 16),
-            
-          ),
-            ],
-          ),
-          SizedBox(width: 60,),
-          Icon(Icons.edit),
-          Icon(Icons.delete) 
-        ],
+                 Text(
+              'Number: $number',
+              style: TextStyle(fontSize: 16),
+              
+            ),
+              ],
+            ),
+            SizedBox(width: 60,),
+            Icon(Icons.edit,color: Color.fromARGB(255, 133, 130, 130),),
+            SizedBox(width: 10,),
+            Icon(Icons.delete,color: Color.fromARGB(255, 177, 32, 21),) 
+          ],
+        ),
       ),
     ],
   );

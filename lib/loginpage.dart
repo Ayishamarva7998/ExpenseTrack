@@ -11,7 +11,7 @@ class loginpage extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            child: Text('Split wise ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),)),
+            child: Text('Easy pay ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),)),
           
           Align(
             alignment: Alignment.topLeft,
