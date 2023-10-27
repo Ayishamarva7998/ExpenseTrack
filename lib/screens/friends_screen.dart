@@ -3,8 +3,8 @@ import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
-class friends_screen extends StatelessWidget {
-  const friends_screen({super.key});
+class Friendsscreen extends StatelessWidget {
+  const Friendsscreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class friends_screen extends StatelessWidget {
         IconButton(onPressed: (){}, icon: Icon(Icons.search)),
             SizedBox(width: 10,),
           IconButton(onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => addcontact(),));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
           }, icon: Icon(Icons.person_add))
           ],
         

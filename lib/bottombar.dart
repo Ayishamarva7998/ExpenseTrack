@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:splitwise_app/screens/chart_screen.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
-import 'package:splitwise_app/screens/settings_screen.dart';
+import 'package:splitwise_app/screens/settings/settings_screen.dart';
 
 
 class bottombar extends StatefulWidget {
@@ -17,10 +17,10 @@ class _bottombarState extends State<bottombar> {
  int myindex = 0;
 
 final pages = [
- groups_screen(),
- friends_screen(),
- chart_screen(),
- settings()
+ Groupscreen(),
+ Friendsscreen(),
+ Chartscreen(),
+ Settings()
   
 ];
 

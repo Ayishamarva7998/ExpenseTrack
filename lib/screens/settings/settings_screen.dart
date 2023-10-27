@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:splitwise_app/screens/about.dart';
-import 'package:splitwise_app/screens/terms.dart';
 
-class settings extends StatelessWidget {
-  const settings({super.key});
+import 'package:splitwise_app/screens/settings/about.dart';
+import 'package:splitwise_app/screens/settings/terms.dart';
+
+
+class Settings extends StatelessWidget {
+  const Settings({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,28 +26,20 @@ class settings extends StatelessWidget {
             child: Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => about(),));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => About(),));
                 },
                 child: ListTile(leading: Icon(Icons.info),title: Text("About us"),
                 trailing: Icon(Icons.arrow_forward_ios),),
               ),
             ),),),
-          // ),SizedBox(height: 20,),
-          //   Material(
-          //   elevation: 2,
-          //   child: Container(height: 60,width: 360,
-          //   child: Center(
-          //     child: ListTile(leading: Icon(Icons.policy),title: Text("Privacy and Policy"),
-          //     trailing: Icon(Icons.arrow_forward_ios),),
-          //   ),),
-          // ),
+         
           SizedBox(height: 20,),
            Material( 
             elevation: 2,
             child: Container(height: 60,width: 360,
             child: Center(
               child: GestureDetector(onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => terms(),));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Terms(),));
               },
                 child: ListTile(leading: Icon(Icons.description),title: Text("Terms and Conditions"),
                 trailing: Icon(Icons.arrow_forward_ios,),),

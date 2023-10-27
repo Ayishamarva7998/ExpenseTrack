@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
-import 'package:splitwise_app/screens/settings_screen.dart';
+import 'package:splitwise_app/screens/settings/settings_screen.dart';
 
-class terms extends StatelessWidget {
-  const terms({super.key});
+class Terms extends StatelessWidget {
+  const Terms({super.key});
 
   @override
   Widget build(BuildContext context) {

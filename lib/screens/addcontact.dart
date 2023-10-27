@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 
-class addcontact extends StatelessWidget {
-  const addcontact({super.key});
+class Addcontact extends StatelessWidget {
+  const Addcontact({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => friends_screen(),));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Friendsscreen(),));
         }, icon: Icon(Icons.arrow_back))
         
       ),

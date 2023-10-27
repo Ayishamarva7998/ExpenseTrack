@@ -5,8 +5,8 @@ import 'package:splitwise_app/screens/firstgroup.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 
 
-class groups_screen extends StatelessWidget {
-  const groups_screen({super.key});
+class Groupscreen extends StatelessWidget {
+  const Groupscreen({super.key});
 //???
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class groups_screen extends StatelessWidget {
               Image.asset('assets/billss.jpg'),
               SizedBox(height: 100,),
               GestureDetector(onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => firstgroup(),));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Firstgroup(),));
               },
                 child: ListTile(leading: Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('You owe 205.00 ',),)),
               Divider(thickness: 5,),
@@ -30,7 +30,7 @@ class groups_screen extends StatelessWidget {
           
                 SizedBox(height: 30,),
                 GestureDetector(onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => adduser(),));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Adduser(),));
                 },
                   child: Container(
                     height: 55,
