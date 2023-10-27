@@ -11,7 +11,7 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.white,elevation: 0,title:
-       Text('Settings',style: TextStyle(
+       const Text('Settings',style: TextStyle(
         color: Colors.black,fontWeight: FontWeight.bold,fontSize: 26),),),
       body: Padding(
         padding: const EdgeInsets.all(11),
@@ -28,7 +28,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => About(),));
                 },
-                child: ListTile(leading: Icon(Icons.info),title: Text("About us"),
+                child: const ListTile(leading: Icon(Icons.info),title: Text("About us"),
                 trailing: Icon(Icons.arrow_forward_ios),),
               ),
             ),),),
@@ -41,7 +41,7 @@ class Settings extends StatelessWidget {
               child: GestureDetector(onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => Terms(),));
               },
-                child: ListTile(leading: Icon(Icons.description),title: Text("Terms and Conditions"),
+                child: const ListTile(leading: Icon(Icons.description),title: Text("Terms and Conditions"),
                 trailing: Icon(Icons.arrow_forward_ios,),),
               ),
             ),),
@@ -50,7 +50,7 @@ class Settings extends StatelessWidget {
            Material(
             elevation: 2,
             child: Container(height: 60,width: 360,
-            child: Center(
+            child: const Center(
               child: ListTile(leading: Icon(Icons.restart_alt),title: Text("Restart"),
               trailing: Icon(Icons.arrow_forward_ios),),
             ),),
