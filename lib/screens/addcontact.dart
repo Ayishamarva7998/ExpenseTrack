@@ -26,7 +26,7 @@ class Addcontact extends StatelessWidget {
             
              Padding(
                padding: const EdgeInsets.only(top: 30,left: 30,right: 30),
-               child: TextField(decoration: InputDecoration(hintText: 'phone no',
+               child: TextField (decoration: InputDecoration(hintText: 'phone no',
                fillColor: Color.fromARGB(255, 231, 230, 230),filled: true,border: 
                          OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
              ),
