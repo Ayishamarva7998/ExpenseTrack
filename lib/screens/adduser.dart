@@ -79,7 +79,7 @@ class Adduser extends StatelessWidget {
     showDialog(context: context,
     builder: (BuildContext context){
       return AlertDialog(
-        title:Text("group"),
+        title:Text("Group Name"),
         content: TextField(),
         actions: [
           TextButton(onPressed: (){
