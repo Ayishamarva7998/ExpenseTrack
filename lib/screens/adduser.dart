@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
+import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
 class Adduser extends StatelessWidget {
