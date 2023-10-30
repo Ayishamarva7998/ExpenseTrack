@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/model/data_model.dart';
 import 'package:splitwise_app/screens/chart_screen.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
@@ -18,7 +19,7 @@ class _bottombarState extends State<bottombar> {
 
 final pages = [
  Groupscreen(),
- Friendsscreen(),
+ Friendsscreen(contact: ContactList(name: '', number: '')),
  Chartscreen(),
  Settings()
   
