@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/model/data_model2.dart';
 import 'package:splitwise_app/screens/addexpense.dart';
 import 'package:splitwise_app/screens/addgroup.dart';
 import 'package:splitwise_app/screens/firstgroup.dart';
@@ -19,7 +20,7 @@ class Groupscreen extends StatelessWidget {
               Image.asset('assets/billss.jpg'),
               SizedBox(height: 100,),
               GestureDetector(onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Firstgroup(),));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Firstgroup(expense: ExpenseList(description: '', amount: '')),));
               },
                 child: ListTile(leading: Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('You owe 205.00 ',),)),
               Divider(thickness: 5,),

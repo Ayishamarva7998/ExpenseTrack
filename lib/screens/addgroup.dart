@@ -21,7 +21,7 @@ class Addgroup extends StatelessWidget {
         ),
         backgroundColor: const Color.fromARGB(255, 208, 202, 202),
         elevation: 0,
-        title: Text(
+        title: const Text(
           'Connect Friends',
           style: TextStyle(
             fontWeight: FontWeight.bold,

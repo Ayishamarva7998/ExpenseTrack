@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
+import 'package:splitwise_app/model/data_model2.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
 class Firstgroup extends StatelessWidget {
-  const Firstgroup({super.key});
+   ExpenseList expense;
+  Firstgroup({Key? key,required this.expense}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
