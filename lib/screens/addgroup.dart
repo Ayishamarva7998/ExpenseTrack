@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
+import 'package:splitwise_app/functions/db_functions.dart';
+import 'package:splitwise_app/model/data_model.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
-class Adduser extends StatelessWidget {
-  const Adduser({super.key});
+class Addgroup extends StatelessWidget {
+  const Addgroup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class Adduser extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 208, 202, 202),
         elevation: 0,
         title: Text(
-          'Friends',
+          'Connect Friends',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 26,
@@ -46,19 +48,24 @@ class Adduser extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                contactlist(text1: 'Adil Rusfeed', text2: '7736348522'),
-                contactlist(text1: 'Arjun ', text2: '7736348522'),
-                contactlist(text1: 'Harif ', text2: '7736348522'),
-                contactlist(text1: 'Rahma', text2: '7736348522'),
-                contactlist(text1: 'Sambras', text2: '7736348522'),
-                contactlist(text1: 'Waseem', text2: '7736348522'),
-                contactlist(text1: 'Zekkeshan', text2: '7736348522'),
-              ], 
-            ),
-          ),
+         Expanded(
+          child: Builder(
+            builder: (context) {
+              return ValueListenableBuilder(
+                valueListenable: contactListNotifier,
+                builder:(BuildContext ctx,List<ContactList> contactList,Widget? child){
+                   return ListView.builder(itemBuilder: (ctx, index) {
+        
+                  final data = contactList[index];
+                  return ListTile(
+                    title: Text(data.name),
+                    subtitle: Text(data.number),
+              
+                  );
+                },
+                itemCount: contactList.length,
+                );},); }),),
+                
         Align(alignment: Alignment.topCenter,
           child: FloatingActionButton.extended(onPressed:(){
             popupbox(context);

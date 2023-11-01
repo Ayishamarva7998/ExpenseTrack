@@ -33,6 +33,7 @@ class Addcontact extends StatelessWidget {
                child: TextFormField (
                 controller: _numberController,
                 decoration: InputDecoration(hintText: 'phone no',
+                prefixIcon: Icon(Icons.phone),
                fillColor: Color.fromARGB(255, 231, 230, 230),filled: true,border: 
                          OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
              ),
@@ -59,6 +60,7 @@ class Addcontact extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => Friendsscreen(contact: ContactList(name: _name, number: _number),),
         ));
+
       }
       print('$_name $_number');
      final _contact = ContactList(name: _name, number: _number);

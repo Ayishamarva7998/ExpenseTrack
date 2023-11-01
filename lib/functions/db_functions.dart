@@ -7,11 +7,18 @@ import 'package:splitwise_app/model/data_model.dart';
 
 Future<void> addContact(ContactList value) async{
 
-  // contactListNotifier.value.add(value);
+  
  final contactDB = await Hive.openBox<ContactList>('contact_db');
- contactDB.add(value);
- 
+  await contactDB.add(value); 
+ contactListNotifier.value.add(value);
  contactListNotifier.notifyListeners();
   
 }
-// Future<void>
+ Future<void> getAllcontacts() async{
+   final contactDB = await Hive.openBox<ContactList>('contact_db');
+   contactListNotifier.value.clear();
+
+   contactListNotifier.value.addAll(contactDB.values);
+   contactListNotifier.notifyListeners();
+
+ }

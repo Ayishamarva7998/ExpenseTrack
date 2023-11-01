@@ -24,6 +24,20 @@ class _AddexpenseState extends State<Addexpense> {
             child: Text('Add expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),)),
           SizedBox(height:  70,),
           Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+          //  DropdownButton<String>(items: [
+          //           'select category'
+          //           'income',
+          //           'expense'
+          //         ].map((String value){
+          //           return DropdownMenuItem<String>(value: value,child: Text(value),);
+          //         }).toList(),
+          //         onChanged:( String? value) {
+          //           setState(() {
+          //             selectedCategory = value!;
+          //           });
+          //          },
+          //           value: selectedCategory,
+          //         ), 
           SizedBox( height: 140),
           Align(
             child: Container(
@@ -36,6 +50,8 @@ class _AddexpenseState extends State<Addexpense> {
                   const ListTile(leading: Icon(Icons.currency_rupee,size: 40,),title: TextField(),
                   trailing: Icon(Icons.expand_more,color: Colors.white,),),
                   DropdownButton<String>(items: [
+                    
+
                     'select category',
                     'income',
                     'expense'
@@ -49,6 +65,7 @@ class _AddexpenseState extends State<Addexpense> {
                    },
                     value: selectedCategory,
                   ), 
+                  
                   
                 ],
               ),

@@ -21,25 +21,20 @@ class Friendsscreen extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottombar(),));
       }, icon: Icon(Icons.arrow_back,color: Colors.black,)),
     
-     actions: [
-      IconButton(onPressed: (){}, icon:Icon(Icons.search)),
-      IconButton(onPressed: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
-      }, icon: Icon(Icons.person_search_rounded,color: Colors.black,))
-     ],
+    
          backgroundColor: const Color.fromARGB(255, 208, 202, 202),elevation: 0, title: Text('Friends',style: TextStyle(fontWeight: FontWeight.bold,fontSize:26,color: Colors.black ,),),
     ),
     body: Column(
       children: [
         Row(
-        //   children: [
-        //     SizedBox(width: 280,),
-        // IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Colors.black,)),
-        //     SizedBox(width: 10,),
-        //   IconButton(onPressed: (){
-        //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
-        //   }, icon: Icon(Icons.person_add))
-        //   ],
+          children: [
+            SizedBox(width: 280,),
+        IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Colors.black,)),
+            SizedBox(width: 10,),
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
+          }, icon: Icon(Icons.person_add))
+          ],
         
         ),
         Expanded(
@@ -56,35 +51,10 @@ class Friendsscreen extends StatelessWidget {
                     subtitle: Text(data.number),
                     
                   );
-                  
-
                 },
-                
                 itemCount: contactList.length,
-                
-                );
-                },
-                 
-                
-              );
-            }
-          ),
-        ),
-        // SizedBox(height: 40,),
-        // contactlist(name: 'Adil Rusfeed P',number: '7736348522'),
-        // SizedBox(height: 20,),
-        // contactlist(name: 'Arjun P.K',number: '7736348522'),
-        //  SizedBox(height: 20,),
-        // contactlist(name: 'Harif Rahman K',number: '7736348522'),
-        //  SizedBox(height: 20,),
-        // contactlist(name: 'Krishna Das A',number: '7736348522'),
-        //  SizedBox(height: 20,),
-        // contactlist(name: 'Rahma P.O',number: '7736348522'),
-        //  SizedBox(height: 20,),
-        // contactlist(name: 'Sambras T',number: '7736348522'),
-        //  SizedBox(height: 20,),
-        // contactlist(name: 'Zekkeshan',number: '7736348522'),
-        //  SizedBox(height: 20,), 
+                );},); }),),
+       
       ],
     ),
     );

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:splitwise_app/bottombar.dart';
+import 'package:splitwise_app/functions/db_functions.dart';
 import 'package:splitwise_app/loginpage.dart';
 import 'package:splitwise_app/model/data_model.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
 import 'package:splitwise_app/screens/firstgroup.dart';
 
 Future<void> main()async {
+  WidgetsFlutterBinding.ensureInitialized(); 
  await Hive.initFlutter();
 if(!Hive.isAdapterRegistered(ContactListAdapter().typeId))
 {
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
+    getAllcontacts();
     return MaterialApp(
       title: 'EasyPay',
       debugShowCheckedModeBanner: false,

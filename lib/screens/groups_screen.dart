@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/screens/addexpense.dart';
-import 'package:splitwise_app/screens/adduser.dart';
+import 'package:splitwise_app/screens/addgroup.dart';
 import 'package:splitwise_app/screens/firstgroup.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 
@@ -30,7 +30,7 @@ class Groupscreen extends StatelessWidget {
           
                 SizedBox(height: 30,),
                 GestureDetector(onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Adduser(),));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addgroup(),));
                 },
                   child: Container(
                     height: 55,
