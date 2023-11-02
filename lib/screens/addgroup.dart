@@ -11,66 +11,69 @@ class Addgroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottombar(),));
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
-        backgroundColor: const Color.fromARGB(255, 208, 202, 202),
-        elevation: 0,
-        title: const Text(
-          'Connect Friends',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 26,
-            color: Colors.black,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottombar(),));
+            },
+            icon: Icon(Icons.arrow_back,color: Colors.black,),
+          ),
+          backgroundColor: Color.fromARGB(255, 22, 140, 124),
+          elevation: 0,
+          title: const Text(
+            'Connect Friends',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.black,
+            ),
           ),
         ),
-      ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              SizedBox(width: 280,),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.search),
-              ),
-              SizedBox(width: 10,),
-              IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
-                },
-                icon: Icon(Icons.person_add),
-              ),
-            ],
-          ),
-         Expanded(
-          child: Builder(
-            builder: (context) {
-              return ValueListenableBuilder(
-                valueListenable: contactListNotifier,
-                builder:(BuildContext ctx,List<ContactList> contactList,Widget? child){
-                   return ListView.builder(itemBuilder: (ctx, index) {
-        
-                  final data = contactList[index];
-                  return ListTile(
-                    title: Text(data.name),
-                    subtitle: Text(data.number),
-              
-                  );
-                },
-                itemCount: contactList.length,
-                );},); }),),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                SizedBox(width: 280,),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.search),
+                ),
+                SizedBox(width: 10,),
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
+                  },
+                  icon: Icon(Icons.person_add),
+                ),
+              ],
+            ),
+           Expanded(
+            child: Builder(
+              builder: (context) {
+                return ValueListenableBuilder(
+                  valueListenable: contactListNotifier,
+                  builder:(BuildContext ctx,List<ContactList> contactList,Widget? child){
+                     return ListView.builder(itemBuilder: (ctx, index) {
+          
+                    final data = contactList[index];
+                    return ListTile(
+                      title: Text(data.name),
+                      subtitle: Text(data.number),
                 
-        Align(alignment: Alignment.topCenter,
-          child: FloatingActionButton.extended(onPressed:(){
-            popupbox(context);
-          }, label: Text('Make a Group')))
-        ],
+                    );
+                  },
+                  itemCount: contactList.length,
+                  );},); }),),
+                  
+          Align(alignment: Alignment.topCenter,
+            child: FloatingActionButton.extended(backgroundColor:Color.fromARGB(255, 92, 172, 162),
+              onPressed:(){
+              popupbox(context);
+            }, label: Text('Make a Group')))
+          ],
+        ),
       ),
     );  
   }

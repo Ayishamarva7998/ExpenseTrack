@@ -37,11 +37,11 @@ class Groupscreen extends StatelessWidget {
                     height: 55,
                     width: 360,
                    
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Color.fromARGB(255, 176, 181, 181),),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Color.fromARGB(255, 92, 172, 162),),
                     child: const Align(
                       alignment: Alignment.center,
                       child: Text('Add Group +',style: TextStyle(fontSize: 20),)),
-                        
+        
                   ),
                 ),
                 SizedBox(height: 20,),

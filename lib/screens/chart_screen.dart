@@ -11,7 +11,7 @@ class Chartscreen extends StatelessWidget {
       child: PieChart( swapAnimationDuration: Duration(milliseconds: 0),swapAnimationCurve: Curves.bounceIn,
                   PieChartData(
                     sections:[
-                    PieChartSectionData(value: 200,title: "Tech fest",color: Color.fromARGB(255, 43, 200, 189)),
+                    PieChartSectionData(value: 200,title: "Tech fest",color: Color.fromARGB(255, 92, 172, 162)),
                     PieChartSectionData(value: 350,title: "Amigoz",color: Color.fromARGB(255, 151, 163, 169)),
                     PieChartSectionData(value: 150,title: "Bridegon",color: Color.fromARGB(255, 55, 145, 139)),
          

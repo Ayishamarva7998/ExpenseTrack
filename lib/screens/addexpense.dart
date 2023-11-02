@@ -27,9 +27,13 @@ class _AddexpenseState extends State<Addexpense> {
       ),
       body:Column (
         children: [
+          
           const Align(alignment: Alignment.topLeft,
-            child: Text('Add expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),)),
-          SizedBox(height:  70,),
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Text('Add expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
+            )),
+          SizedBox(height:  40,),
           Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
          
           SizedBox( height: 140),
@@ -44,20 +48,18 @@ class _AddexpenseState extends State<Addexpense> {
                     ListTile(leading: Icon(Icons.description_outlined,size: 40,),title: 
                      TextFormField (
                  controller: _descriptionController,
-                  decoration: InputDecoration(hintText: 'descrition',
-                  prefixIcon: Icon(Icons.abc),
+                  decoration: InputDecoration(hintText: 'description',
+                 
                  fillColor: Color.fromARGB(255, 231, 230, 230),filled: true,border: 
                            OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),),
                      ListTile(leading: Icon(Icons.currency_rupee,size: 40,),title:TextFormField(
                          controller: _amountController,
                         decoration: InputDecoration(hintText: 'amount',
-                        prefixIcon: Icon(Icons.currency_rupee),
+                       
                         fillColor: Color.fromARGB(255, 231, 230, 230),filled: true,
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
-                        
-            
+
                      ) ,
-            
             
                     trailing: Icon(Icons.expand_more,color: Colors.white,),),
                     DropdownButton<String>(items: [

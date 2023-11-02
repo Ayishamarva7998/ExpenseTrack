@@ -10,44 +10,58 @@ class Addcontact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 30,right: 30),
-              child: TextFormField(
-                controller: _nameController,
-                        decoration: InputDecoration
-                        (hintText: 'name',fillColor: const Color.fromARGB(255, 231, 230, 230),filled: true,
-              border: 
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
-            ),
-            
-             Padding(
-               padding: const EdgeInsets.only(top: 30,left: 30,right: 30),
-               child: TextFormField (
-                controller: _numberController,
-                decoration: InputDecoration(hintText: 'phone no',
-                prefixIcon: Icon(Icons.phone),
-               fillColor: Color.fromARGB(255, 231, 230, 230),filled: true,border: 
-                         OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
-             ),
-             SizedBox(height: 20,),
-
-            ElevatedButton.icon(onPressed: (){
-              onAddStudentButtonClicked(context);
-            }, icon: Icon(Icons.add), label: Text('save'))
-          ],
+    return SafeArea(
+      child: Scaffold(
+      
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 22, 140, 124)
+          
+    
+          
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 30,right: 30),
+                child: TextFormField(
+                  controller: _nameController,
+                          decoration: InputDecoration
+                          (hintText: 'name',
+                          prefixIcon: Icon(Icons.person),
+                          
+                          fillColor: const Color.fromARGB(255, 231, 230, 230),filled: true,
+                border: 
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
+              ),
+              
+               Padding(
+                 padding: const EdgeInsets.only(top: 30,left: 30,right: 30),
+                 child: TextFormField (
+                  controller: _numberController,
+                  decoration: InputDecoration(hintText: 'phone no',
+                  prefixIcon: Icon(Icons.phone),
+                 fillColor: Color.fromARGB(255, 231, 230, 230),filled: true,border: 
+                           OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
+               ),
+               SizedBox(height: 30,),
+    
+            Container(height: 60,
+            width: 330,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:  Color.fromARGB(255, 92, 172, 162),),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Save',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
+              ],
+            ),)
+            ],
+          ),
+          
         ),
         
+    
       ),
-      
-
     );
   }
       Future<void> onAddStudentButtonClicked(BuildContext context) async {

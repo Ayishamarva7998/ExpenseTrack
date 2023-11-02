@@ -57,7 +57,7 @@ class Settings extends StatelessWidget {
           ),
           SizedBox(height: 40,),
           Container(height:60,width: 360,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:Color.fromARGB(255, 22, 140, 124),),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:Color.fromARGB(255, 92, 172, 162),),
           child: Align(child: Text('logout')),
           )
           ],

@@ -1,43 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
+import 'package:splitwise_app/functions/db_function2.dart';
 import 'package:splitwise_app/model/data_model2.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
 class Firstgroup extends StatelessWidget {
    ExpenseList expense;
   Firstgroup({Key? key,required this.expense}) : super(key: key);
+   List expenseList =[];  
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-       leading: IconButton(onPressed: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) =>bottombar(),));
-        
-       }, icon: Icon(Icons.arrow_back)),
-       backgroundColor: const Color.fromARGB(255, 215, 212, 212),elevation: 0,
-      ),
-      body: Column(
-        children: [
-          const Align(alignment: Alignment.topLeft,
-            child: Text('Tech house',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),)),SizedBox(height: 30,),
-          const Align(alignment: Alignment.topRight,
-            child: Text('Total Income:1069.00',style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)),
-          const Align(alignment: Alignment.topRight,
-            child: Text('Total Expense:120.00',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),)),
-            SizedBox(height: 60,),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Expenses',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22,color: Colors.black),),
+         leading: IconButton(onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) =>bottombar(),));
+          
+         }, icon: Icon(Icons.arrow_back,color: Colors.black,)),
+         backgroundColor: Color.fromARGB(255, 22, 140, 124),elevation: 0,
+        ),
+        body: Column(
+          children: [
 
-            const Align(alignment: Alignment.topLeft,
-              child: Text('Oct 19',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
-              SizedBox(height: 20,),
-             list(icon:Icons.local_taxi,title: 'Taxi fare',text1: 'Rahma paid 50.00',text2: 'You borrowed',amount: '10.00'),
-             list(icon: Icons.restaurant, title: 'Food', text1: 'Arjun paid 654.00', text2: 'You borrowed', amount: '280.00'),
-             list(icon: Icons.shopping_cart, title: 'Shopping', text1: 'You paid 2549.00', text2: 'You lent', amount: ' 798.00' ),
-             list(icon:Icons.local_cafe, title: 'Tea & Snacks ', text1: 'Ameer paid 160.00', text2: 'You borrowed', amount: '80.00')
-        ],
-        
+            SizedBox(height: 50,),
+            Align(alignment: Alignment.topRight,
+              child: Text('Total Income:1069.00',style:TextStyle(color: Colors.red))),
+            Align(alignment: Alignment.topRight,
+              child: Text('total Expense:120.00',style: TextStyle(color: Colors.green),)),
+             Expanded(
+            child: Builder(
+              builder: (context) {
+                return ValueListenableBuilder(
+                  valueListenable: expenseListNotifier,
+                  builder:(BuildContext ctx,List<ExpenseList> expenseList,Widget? child){
+                     return ListView.builder(itemBuilder: (ctx, index) {
+          
+                    final data = expenseList[index];
+                    return ListTile(
+                      title: Text(data.description),
+                      subtitle: Text(data.amount),
+                      
+                    );
+                  },
+                  itemCount: expenseList.length,
+                  );},); }),),
+            
+          ],
+         
+          
+        ),
+    
       ),
-
     );
   }
 

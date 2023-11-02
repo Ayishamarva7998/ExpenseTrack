@@ -22,7 +22,7 @@ class Friendsscreen extends StatelessWidget {
       }, icon: Icon(Icons.arrow_back,color: Colors.black,)),
     
     
-         backgroundColor: const Color.fromARGB(255, 208, 202, 202),elevation: 0, title: Text('Friends',style: TextStyle(fontWeight: FontWeight.bold,fontSize:26,color: Colors.black ,),),
+         backgroundColor: Color.fromARGB(255, 22, 140, 124),elevation: 0, title: Text('Friends',style: TextStyle(fontWeight: FontWeight.bold,fontSize:26,color: Colors.black ,),),
     ),
     body: Column(
       children: [
@@ -63,9 +63,9 @@ class Friendsscreen extends StatelessWidget {
   Row contactlist({required String name, required String number}) {
   return Row(
     children: [
-      SizedBox(width: 10),
-      CircleAvatar(radius: 30, backgroundColor: Colors.grey),
-      SizedBox(width: 30),
+      const SizedBox(width: 10),
+      const CircleAvatar(radius: 30, backgroundColor: Colors.grey),
+      const SizedBox(width: 30),
       SingleChildScrollView(scrollDirection: Axis.horizontal,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
