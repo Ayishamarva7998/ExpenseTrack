@@ -27,9 +27,11 @@ class Firstgroup extends StatelessWidget {
 
             SizedBox(height: 50,),
             Align(alignment: Alignment.topRight,
-              child: Text('Total Income:1069.00',style:TextStyle(color: Colors.red))),
+              child: Text('Total Income:1069.00',style:TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),)),
             Align(alignment: Alignment.topRight,
-              child: Text('total Expense:120.00',style: TextStyle(color: Colors.green),)),
+              child: Text('total Expense:120.00',style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold,fontSize: 15),)),
+              const Align(alignment: Alignment.topLeft,
+                child: Text('Oct 19',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
              Expanded(
             child: Builder(
               builder: (context) {
