@@ -54,7 +54,7 @@ class Addcontact extends StatelessWidget {
               child: Container(height: 60,
               width: 330,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:  Color.fromARGB(255, 92, 172, 162),),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              child: const Row(mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Save',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)
                 ],

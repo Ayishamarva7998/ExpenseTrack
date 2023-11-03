@@ -16,7 +16,13 @@ class _AddexpenseState extends State<Addexpense> {
   final _descriptionController = TextEditingController();
   final _amountController = TextEditingController();
   final _selectController = TextEditingController();
-  String selectedCategory = 'select category';
+  String selectedCategory= 'income';
+  var items = [
+    'income',
+    'expense'
+  ];
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +35,7 @@ class _AddexpenseState extends State<Addexpense> {
                   builder: (context) => bottombar(),
                 ));
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
               ))),
@@ -44,10 +50,10 @@ class _AddexpenseState extends State<Addexpense> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                 ),
               )),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
-          Text(
+          const Text(
             'Tech House',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
           ),
@@ -90,38 +96,40 @@ class _AddexpenseState extends State<Addexpense> {
                         ),
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.expand_more,
                       color: Colors.white,
                     ),
-                    DropdownButton<String>(
-                      items: ['select category', 'income', 'expense']
-                          .map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (String? value) {
-                        setState(() {
-                          selectedCategory = value!;
-                        });
-                      },
-                      value: selectedCategory,
-                    ),
+                   DropdownButton<String>(
+  value: selectedCategory, // Add the value property
+  items: items.map((String item) {
+    return DropdownMenuItem<String>(
+      value: item,
+      child: Text(item),
+    );
+  }).toList(),
+  onChanged: (String? value) {
+    setState(() {
+      selectedCategory = value!;
+      _selectController.text = value; 
+    });
+  },
+),
+
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: TextFormField(
                           controller: _selectController,
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.swap_vert),
-                              hintText: 'select',
+                            prefixIcon: const Icon(Icons.swap_vert
+                            ),
+                              hintText: selectedCategory,
                               fillColor: Color.fromARGB(255, 231, 230, 230),
                               filled: true,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     GestureDetector(
@@ -135,7 +143,7 @@ class _AddexpenseState extends State<Addexpense> {
                           borderRadius: BorderRadius.circular(10),
                           color: Color.fromARGB(255, 92, 172, 162),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -160,18 +168,19 @@ class _AddexpenseState extends State<Addexpense> {
   Future<void> onAddExpenseButtonClicked(BuildContext context) async {
     final _description = _descriptionController.text.trim();
     final _amount = _amountController.text.trim();
-    if (_description.isEmpty || _amount.isEmpty) {
+    final _select = _selectController.text.trim();
+    if (_description.isEmpty || _amount.isEmpty || _select.isEmpty) {
       return;
     } else {
-      final expense = (description: _description, amount: _amount);
+      final expense = (description: _description, amount: _amount,select:_select);
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => Firstgroup(
-          expense: ExpenseList(description: _description, amount: _amount),
+          expense: ExpenseList(description: _description, amount: _amount,select: _select),
         ),
       ));
     }
     print('$_description $_amount');
-    final _expense = ExpenseList(description: _description, amount: _amount);
+    final _expense = ExpenseList(description: _description, amount: _amount,select: _select);
 
     addExpense(_expense);
   }

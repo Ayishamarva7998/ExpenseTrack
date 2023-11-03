@@ -18,16 +18,22 @@ class Groupscreen extends StatelessWidget {
             children: [
 
               Image.asset('assets/billss.jpg'),
-              SizedBox(height: 100,),
-              GestureDetector(onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Firstgroup(expense: ExpenseList(description: '', amount: '')),));
-              },
-                child: ListTile(leading: Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('You owe 205.00 ',),)),
-              Divider(thickness: 5,),
-               ListTile(leading: Text('Amigoz',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('They owe you 1120.00 '),),
-               Divider(thickness: 5,),
-                ListTile(leading: Text('Bridgeon',style: TextStyle(fontWeight: FontWeight.bold),),trailing: Text('They owe you 500.00'),),
-                Divider(thickness: 5,),
+              
+              
+              
+              // SizedBox(height: 100,),
+              // GestureDetector(onTap: () {
+              //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => Firstgroup(expense: ExpenseList(description: '', amount: '',select: '')),));
+              // },
+              //   child: ListTile(leading: Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold),),
+              //   trailing: Text('You owe 205.00 ',),)),
+              // Divider(thickness: 5,),
+              //  ListTile(leading: Text('Amigoz',style: TextStyle(fontWeight: FontWeight.bold),),
+              //  trailing: Text('They owe you 1120.00 '),),
+              //  Divider(thickness: 5,),
+              //   ListTile(leading: Text('Bridgeon',style: TextStyle(fontWeight: FontWeight.bold),),
+              //   trailing: Text('They owe you 500.00'),),
+              //   Divider(thickness: 5,),
           
                 SizedBox(height: 30,),
                 GestureDetector(onTap: () {

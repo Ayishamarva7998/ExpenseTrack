@@ -33,22 +33,25 @@ class Firstgroup extends StatelessWidget {
               const Align(alignment: Alignment.topLeft,
                 child: Text('Oct 19',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
              Expanded(
-            child: Builder(
-              builder: (context) {
-                return ValueListenableBuilder(
-                  valueListenable: expenseListNotifier,
-                  builder:(BuildContext ctx,List<ExpenseList> expenseList,Widget? child){
-                     return ListView.builder(itemBuilder: (ctx, index) {
-          
-                    final data = expenseList[index];
-                    return ListTile(
-                      title: Text(data.description),
-                      subtitle: Text(data.amount),
-                      
-                    );
-                  },
-                  itemCount: expenseList.length,
-                  );},); }),),
+          child: Builder(
+            builder: (context) {
+              return ValueListenableBuilder(
+                valueListenable: expenseListNotifier,
+                builder:(BuildContext ctx,List<ExpenseList> contactList,Widget? child){
+                   return ListView.builder(itemBuilder: (ctx, index) {
+        
+                  final data = contactList[index];
+                  return ListTile(
+                    title: Text(data.description),
+                    subtitle: Text(data.amount),
+                    trailing: Text(data.select!),
+                    
+                    
+                    
+                  );
+                },
+                itemCount: contactList.length,
+                );},); }),),
             
           ],
          

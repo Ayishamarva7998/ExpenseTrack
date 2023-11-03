@@ -11,6 +11,8 @@ class ContactList{
   @HiveField(1)
   final String number;
 
+  
+
    
   ContactList({required this.name,required this.number});
  

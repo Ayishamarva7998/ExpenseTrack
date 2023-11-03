@@ -2,6 +2,7 @@
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/db_functions.dart';
 import 'package:splitwise_app/model/data_model.dart';
+import 'package:splitwise_app/model/data_model2.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
@@ -49,6 +50,7 @@ class Friendsscreen extends StatelessWidget {
                   return ListTile(
                     title: Text(data.name),
                     subtitle: Text(data.number),
+                    
                     
                   );
                 },
