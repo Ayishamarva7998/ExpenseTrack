@@ -101,7 +101,7 @@ class _AddexpenseState extends State<Addexpense> {
                       color: Colors.white,
                     ),
                    DropdownButton<String>(
-  value: selectedCategory, // Add the value property
+  value: selectedCategory,
   items: items.map((String item) {
     return DropdownMenuItem<String>(
       value: item,

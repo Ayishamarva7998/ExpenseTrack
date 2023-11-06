@@ -3,7 +3,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/db_function2.dart';
 import 'package:splitwise_app/functions/db_functions.dart';
-import 'package:splitwise_app/functions/functions3.dart';
+import 'package:splitwise_app/functions/db_functions3.dart';
 import 'package:splitwise_app/loginpage.dart';
 import 'package:splitwise_app/model/data_model.dart';
 import 'package:splitwise_app/model/data_model2.dart';
