@@ -16,6 +16,11 @@ Future<void> addContact(ContactList value) async{
    contactListNotifier.notifyListeners();
 
  }
+ void addcheck(int id,ContactList data)async{
+   final contactDB = await Hive.openBox<ContactList>('contact_db');
+   await contactDB.putAt(id, data);
+   getAllcontacts();
+ }
  
 
  

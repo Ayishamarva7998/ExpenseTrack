@@ -19,17 +19,20 @@ class GroupListAdapter extends TypeAdapter<GroupList> {
     return GroupList(
       contacts: fields[0] as String,
       groupname: fields[1] as String,
+      isdone: fields[2] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, GroupList obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.contacts)
       ..writeByte(1)
-      ..write(obj.groupname);
+      ..write(obj.groupname)
+      ..writeByte(2)
+      ..write(obj.isdone);
   }
 
   @override

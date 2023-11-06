@@ -71,10 +71,11 @@ class _AddgroupState extends State<Addgroup> {
                           title: Text(data.name),
                           subtitle: Text(data.number),
                           trailing: Checkbox(
-                            value: _isChecked[index],
-                            onChanged: (value) {
+                            value:data.isDone,
+                            onChanged: (newvalue) {
                               setState(() {
-                                _isChecked[index] = value!;
+                               data.isDone=newvalue!;
+                               addcheck(index, data);
                               });
                             },
                           ),
@@ -128,7 +129,7 @@ class MakeGroupDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Groupscreen(group: GroupList(contacts: '', groupname: '')),));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Groupscreen(group: GroupList(contacts: '', groupname: '',isdone: false)),));
           },
           child: Text("OK"),
         ),

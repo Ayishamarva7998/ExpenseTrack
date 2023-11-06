@@ -9,11 +9,11 @@ class loginpage extends StatelessWidget {
       
       body:SafeArea(child: Column(
         children: [
-          Align(
+          const Align(
             alignment: Alignment.topLeft,
             child: Text('Easy pay ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),)),
           
-          Align(
+          const Align(
             alignment: Alignment.topLeft,
             child: Text('Makes life easier,',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),)),
             SizedBox(height: 40,),
@@ -45,7 +45,7 @@ class loginpage extends StatelessWidget {
             height: 50,
             width: 350,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 7, 179, 156),),
-            child: Align(alignment: Alignment.center,
+            child: const Align(alignment: Alignment.center,
               child: Text('login',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),)),
 
            ),

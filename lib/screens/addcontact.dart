@@ -77,12 +77,12 @@ class Addcontact extends StatelessWidget {
       } else {
         final contact = (name: _name, number: _number);
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Friendsscreen(contact: ContactList(name: _name, number: _number),),
+          builder: (context) => Friendsscreen(contact: ContactList(name: _name, number: _number,isDone: false),),
         ));
 
       }
       print('$_name $_number');
-     final _contact = ContactList(name: _name, number: _number);
+     final _contact = ContactList(name: _name, number: _number,isDone: false);
 
       addContact(_contact);
 

@@ -11,10 +11,13 @@ class GroupList{
   @HiveField(1)
   final String groupname;
 
+  @HiveField(2)
+  late bool isdone;
+
   
 
    
-  GroupList({required this.contacts,required this.groupname});
+  GroupList({required this.contacts,required this.groupname,required this.isdone});
  
 }
  

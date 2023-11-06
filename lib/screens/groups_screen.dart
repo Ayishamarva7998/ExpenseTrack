@@ -25,7 +25,7 @@ class Groupscreen extends StatelessWidget {
                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Firstgroup(expense: ExpenseList(description: '', amount: '', select: '')),));
                },
                  child: Container(height: 50,width: 320,color: Colors.white,
-                 child: Align(alignment: Alignment.center,
+                 child: const Align(alignment: Alignment.center,
                   child: Text('Tech House')),),
                ),
 

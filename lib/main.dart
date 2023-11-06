@@ -19,6 +19,7 @@ if(!Hive.isAdapterRegistered(ContactListAdapter().typeId))
   Hive.registerAdapter(ContactListAdapter());
 
 }
+
  WidgetsFlutterBinding.ensureInitialized(); 
  await Hive.initFlutter();
 if(!Hive.isAdapterRegistered(ExpenseListAdapter().typeId))
@@ -26,6 +27,7 @@ if(!Hive.isAdapterRegistered(ExpenseListAdapter().typeId))
   Hive.registerAdapter(ExpenseListAdapter());
 
 }
+
 WidgetsFlutterBinding.ensureInitialized(); 
  await Hive.initFlutter();
 if(!Hive.isAdapterRegistered(GroupListAdapter().typeId))
@@ -49,7 +51,7 @@ class MyApp extends StatelessWidget {
     getAllcontacts();
     getAllexpense(); 
     getAllgroup();
-    return MaterialApp(
+    return const MaterialApp(
       title: 'EasyPay',
       debugShowCheckedModeBanner: false,
      home: bottombar(),

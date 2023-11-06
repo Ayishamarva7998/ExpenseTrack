@@ -19,8 +19,8 @@ class _bottombarState extends State<bottombar> {
  int myindex = 0;
 
 final pages = [
- Groupscreen(group: GroupList(contacts: '', groupname:'')),
- Friendsscreen(contact: ContactList(name: '', number: '')),
+ Groupscreen(group: GroupList(contacts: '', groupname:'',isdone: false)),
+ Friendsscreen(contact: ContactList(name: '', number: '',isDone: false)),
  Chartscreen(),
  Settings()
   

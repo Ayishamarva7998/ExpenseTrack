@@ -10,11 +10,13 @@ class ContactList{
 
   @HiveField(1)
   final String number;
-
+  
+  @HiveField(2)
+  late bool isDone;
   
 
    
-  ContactList({required this.name,required this.number});
+  ContactList({required this.name,required this.number,required this.isDone});
  
 }
  
