@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/db_functions.dart';
+import 'package:splitwise_app/functions/functions3.dart';
 import 'package:splitwise_app/model/data_model.dart';
+import 'package:splitwise_app/model/data_model3.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
 class Addgroup extends StatefulWidget {
   const Addgroup({super.key});
-
   @override
   State<Addgroup> createState() => _AddgroupState();
 }
@@ -62,8 +63,10 @@ class _AddgroupState extends State<Addgroup> {
                   return ValueListenableBuilder(
                     valueListenable: contactListNotifier,
                     builder: (BuildContext ctx, List<ContactList> contactList, Widget? child) {
-                      return ListView.builder(itemBuilder: (ctx, index) {
-                        final data = contactList[index];
+                      return ListView.builder(
+                      //  shrinkWrap: true,
+                        itemBuilder: (ctx, index) {
+                        final data = contactList[index];  
                         return ListTile(
                           title: Text(data.name),
                           subtitle: Text(data.number),
@@ -93,16 +96,12 @@ class _AddgroupState extends State<Addgroup> {
                 },
                 label: Text('Make a Group'),
               ),
-            ),
-            
-            
-          ],
-          
+            ),  
+          ], 
         ),
       ),
     );
   }
-
   void navigateToMakeGroupDialog(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -129,7 +128,7 @@ class MakeGroupDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Groupscreen(),));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Groupscreen(group: GroupList(contacts: '', groupname: '')),));
           },
           child: Text("OK"),
         ),

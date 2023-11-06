@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/db_function2.dart';
 import 'package:splitwise_app/model/data_model2.dart';
+import 'package:splitwise_app/model/data_model3.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
+import 'package:splitwise_app/screens/memebers.dart';
 
 class Firstgroup extends StatelessWidget {
    ExpenseList expense;
@@ -24,6 +26,17 @@ class Firstgroup extends StatelessWidget {
         ),
         body: Column(
           children: [
+          GestureDetector(onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder:(context) => Members(memebers: GroupList(contacts: '', groupname: '')),));
+          },
+            child: Row(children: [
+              Align(alignment: Alignment.topRight,
+                child: Text('Members',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+              Align(alignment: Alignment.topRight,
+                child: Icon(Icons.group_add,size: 22,))
+          
+            ],),
+          ),
 
             SizedBox(height: 50,),
             Align(alignment: Alignment.topRight,
@@ -44,8 +57,7 @@ class Firstgroup extends StatelessWidget {
                   return ListTile(
                     title: Text(data.description),
                     subtitle: Text(data.amount),
-                    trailing: Text(data.select!),
-                    
+                    trailing: Text(data.select),
                     
                     
                   );

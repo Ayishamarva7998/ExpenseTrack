@@ -8,8 +8,6 @@ import 'package:splitwise_app/screens/groups_screen.dart';
 
 class Friendsscreen extends StatelessWidget {
   ContactList contact;
-  
-
   Friendsscreen({Key? key,required this.contact}) : super(key: key);
 
 

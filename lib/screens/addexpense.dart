@@ -172,7 +172,7 @@ class _AddexpenseState extends State<Addexpense> {
     if (_description.isEmpty || _amount.isEmpty || _select.isEmpty) {
       return;
     } else {
-      final expense = (description: _description, amount: _amount,select:_select);
+      // final expense = (description: _description, amount: _amount,select:_select);
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => Firstgroup(
           expense: ExpenseList(description: _description, amount: _amount,select: _select),
