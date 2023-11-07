@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'data_model3.dart';
+part of 'grouplist_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

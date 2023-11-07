@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'data_model2.dart';
+part of 'expenselist_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:splitwise_app/functions/db_functions.dart';
-import 'package:splitwise_app/model/data_model.dart';
+import 'package:splitwise_app/functions/contactlist_fn.dart';
+import 'package:splitwise_app/model/contactlist_model.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 
 class Addcontact extends StatelessWidget {
@@ -41,9 +41,11 @@ class Addcontact extends StatelessWidget {
                  child: TextFormField (
                   controller: _numberController,
                   decoration: InputDecoration(hintText: 'phone no',
+                  
                   prefixIcon: Icon(Icons.phone),
                  fillColor: Color.fromARGB(255, 231, 230, 230),filled: true,border: 
-                           OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
+                           OutlineInputBorder(borderRadius: BorderRadius.circular(10))),maxLength: 10,),
+                           
                ),
                SizedBox(height: 30,),
     

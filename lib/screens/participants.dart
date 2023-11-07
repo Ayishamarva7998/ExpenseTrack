@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:splitwise_app/functions/db_functions.dart';
-import 'package:splitwise_app/functions/db_functions3.dart';
-import 'package:splitwise_app/model/data_model.dart';
-import 'package:splitwise_app/model/data_model3.dart';
+import 'package:splitwise_app/functions/contactlist_fn.dart';
+import 'package:splitwise_app/functions/grouplist_fn.dart';
+import 'package:splitwise_app/model/contactlist_model.dart';
+import 'package:splitwise_app/model/grouplist_model.dart';
 
 class Members extends StatefulWidget {
    GroupList memebers;

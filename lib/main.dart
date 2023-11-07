@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:splitwise_app/bottombar.dart';
-import 'package:splitwise_app/functions/db_function2.dart';
-import 'package:splitwise_app/functions/db_functions.dart';
-import 'package:splitwise_app/functions/db_functions3.dart';
+import 'package:splitwise_app/functions/expense_fn.dart';
+import 'package:splitwise_app/functions/contactlist_fn.dart';
+import 'package:splitwise_app/functions/grouplist_fn.dart';
 import 'package:splitwise_app/loginpage.dart';
-import 'package:splitwise_app/model/data_model.dart';
-import 'package:splitwise_app/model/data_model2.dart';
-import 'package:splitwise_app/model/data_model3.dart';
-import 'package:splitwise_app/screens/addcontact.dart';
-import 'package:splitwise_app/screens/firstgroup.dart';
+import 'package:splitwise_app/model/contactlist_model.dart';
+import 'package:splitwise_app/model/expenselist_model.dart';
+import 'package:splitwise_app/model/grouplist_model.dart';
+
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized(); 

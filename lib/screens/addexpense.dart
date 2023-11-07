@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
-import 'package:splitwise_app/functions/db_function2.dart';
-import 'package:splitwise_app/functions/db_functions.dart';
-import 'package:splitwise_app/model/data_model2.dart';
+import 'package:splitwise_app/functions/expense_fn.dart';
+import 'package:splitwise_app/functions/contactlist_fn.dart';
+import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/screens/firstgroup.dart';
 
 class Addexpense extends StatefulWidget {
@@ -15,7 +15,7 @@ class Addexpense extends StatefulWidget {
 class _AddexpenseState extends State<Addexpense> {
   final _descriptionController = TextEditingController();
   final _amountController = TextEditingController();
-  final _selectController = TextEditingController();
+  final _selectController = TextEditingController(); 
   String selectedCategory= 'income';
   var items = [
     'income',

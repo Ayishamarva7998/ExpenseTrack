@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:splitwise_app/functions/db_functions3.dart';
-import 'package:splitwise_app/model/data_model2.dart';
-import 'package:splitwise_app/model/data_model3.dart';
+import 'package:splitwise_app/functions/grouplist_fn.dart';
+import 'package:splitwise_app/model/expenselist_model.dart';
+import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/addexpense.dart';
 import 'package:splitwise_app/screens/addgroup.dart';
 import 'package:splitwise_app/screens/firstgroup.dart';

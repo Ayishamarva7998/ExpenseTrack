@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:splitwise_app/model/data_model.dart';
+import 'package:splitwise_app/model/contactlist_model.dart';
 
  ValueNotifier<List<ContactList>> contactListNotifier =ValueNotifier([]);
 Future<void> addContact(ContactList value) async{

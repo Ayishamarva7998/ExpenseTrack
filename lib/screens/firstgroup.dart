@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
-import 'package:splitwise_app/functions/db_function2.dart';
-import 'package:splitwise_app/model/data_model2.dart';
-import 'package:splitwise_app/model/data_model3.dart';
+import 'package:splitwise_app/functions/expense_fn.dart';
+import 'package:splitwise_app/model/expenselist_model.dart';
+import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 import 'package:splitwise_app/screens/participants.dart';
 

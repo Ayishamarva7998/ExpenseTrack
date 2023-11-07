@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:splitwise_app/model/data_model2.dart';
+import 'package:splitwise_app/model/expenselist_model.dart';
 
 ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
  Future<void> addExpense(ExpenseList value)async{
