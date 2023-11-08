@@ -2,9 +2,9 @@
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/model/contactlist_model.dart';
-import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/screens/addcontact.dart';
-import 'package:splitwise_app/screens/groups_screen.dart';
+import 'package:splitwise_app/screens/edit.dart';
+
 
 class Friendsscreen extends StatelessWidget {
   ContactList contact;
@@ -42,18 +42,46 @@ class Friendsscreen extends StatelessWidget {
               return ValueListenableBuilder(
                 valueListenable: contactListNotifier,
                 builder:(BuildContext ctx,List<ContactList> contactList,Widget? child){
-                   return ListView.builder(itemBuilder: (ctx, index) {
-        
-                  final data = contactList[index];
-                  return ListTile(
-                    title: Text(data.name),
-                    subtitle: Text(data.number),
-                    
-                    
-                  );
-                },
-                itemCount: contactList.length,
-                );},); }),),
+                   return ListView.builder(
+  itemBuilder: (ctx, index) {
+    final data = contactList[index];
+    return ListTile(
+      title: Text(data.name),
+      subtitle: Text(data.number),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            onPressed: () {
+              
+           Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  EditContacts(
+                                                  name: data.name,
+                                                  number:data.number,
+                                                  index:index,
+            ),));
+             
+             
+            },
+            icon: Icon(Icons.edit, color: const Color.fromARGB(255, 133, 130, 130)),
+          ),
+          IconButton(
+            onPressed: () {
+              deleteContacts(index);
+            },
+            icon: Icon(Icons.delete, color: const Color.fromARGB(255, 145, 39, 31)),
+          ),
+        ],
+      ),
+    );
+  },
+  itemCount: contactList.length,
+);
+                }
+                );
+                 }
+                ),
+                ),
+                
        
       ],
     ),

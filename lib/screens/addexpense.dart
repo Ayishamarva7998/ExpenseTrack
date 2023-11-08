@@ -105,7 +105,11 @@ class _AddexpenseState extends State<Addexpense> {
   items: items.map((String item) {
     return DropdownMenuItem<String>(
       value: item,
-      child: Text(item),
+      child: Text(item,  style: TextStyle(
+          color: item == 'income' ? Colors.green : item == 'expense' ? Colors.red : Colors.black,
+        ),),
+     
+      
     );
   }).toList(),
   onChanged: (String? value) {
@@ -114,6 +118,10 @@ class _AddexpenseState extends State<Addexpense> {
       _selectController.text = value; 
     });
   },
+  
+  style:  TextStyle(
+    color: selectedCategory == 'income' ? Colors.green : selectedCategory == 'expense' ? Colors.red : Colors.black,
+  ),
 ),
 
                     Padding(
@@ -135,6 +143,7 @@ class _AddexpenseState extends State<Addexpense> {
                     GestureDetector(
                       onTap: () {
                         onAddExpenseButtonClicked(context);
+                        _showPopup(context);
                       },
                       child: Container(
                         height: 60,
@@ -150,7 +159,10 @@ class _AddexpenseState extends State<Addexpense> {
                               'Save',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
-                            )
+                            ),
+
+                            
+                            
                           ],
                         ),
                       ),
@@ -184,4 +196,24 @@ class _AddexpenseState extends State<Addexpense> {
 
     addExpense(_expense);
   }
+  Future<void> _showPopup(BuildContext context) async {
+  await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Expense Saved'),
+        content: Text('Your expense has been successfully saved.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 }

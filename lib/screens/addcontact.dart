@@ -52,6 +52,7 @@ class Addcontact extends StatelessWidget {
             GestureDetector(onTap: () {
 
               onAddStudentButtonClicked(context);
+              _showPopup(context);
             },
               child: Container(height: 60,
               width: 330,
@@ -89,4 +90,24 @@ class Addcontact extends StatelessWidget {
       addContact(_contact);
 
     }
+    Future<void> _showPopup(BuildContext context) async {
+  await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Contact Saved'),
+        content: Text('Your Conatct has been successfully completed.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 }

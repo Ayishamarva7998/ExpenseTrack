@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:splitwise_app/model/contactlist_model.dart';
@@ -21,6 +23,19 @@ Future<void> addContact(ContactList value) async{
    await contactDB.putAt(id, data);
    getAllcontacts();
  }
- 
+ Future<void> deleteContacts(int index) async {
+  final contactDB = await Hive.openBox<ContactList>('contact_db');
+  contactDB.deleteAt(index);
+  getAllcontacts();
+ }
+void editContacts(index,ContactList value) async {
+  final contactDB = await Hive.openBox<ContactList>('contact_db');
+  contactListNotifier.value.clear();
+  contactListNotifier.value.addAll(contactDB.values);
+   contactListNotifier.notifyListeners();
+  contactDB.putAt(index, value);
+  getAllcontacts();
+}
+  
 
  
