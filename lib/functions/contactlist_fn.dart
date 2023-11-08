@@ -5,11 +5,11 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:splitwise_app/model/contactlist_model.dart';
 
  ValueNotifier<List<ContactList>> contactListNotifier =ValueNotifier([]);
-Future<void> addContact(ContactList value) async{
+ Future<void> addContact(ContactList value) async{
  final contactDB = await Hive.openBox<ContactList>('contact_db');
   await contactDB.add(value); 
  contactListNotifier.value.add(value);
- contactListNotifier.notifyListeners();
+ contactListNotifier.notifyListeners(); 
 }
  Future<void> getAllcontacts() async{
    final contactDB = await Hive.openBox<ContactList>('contact_db');

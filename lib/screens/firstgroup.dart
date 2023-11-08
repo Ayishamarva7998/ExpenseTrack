@@ -101,7 +101,7 @@ class Firstgroup extends StatelessWidget {
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
-                          trailing: Text(data.select),
+                          trailing: Text(data.select ),
                         );
                       },
                       itemCount: contactList.length,

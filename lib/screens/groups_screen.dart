@@ -26,7 +26,7 @@ class Groupscreen extends StatelessWidget {
                },
                  child: Container(height: 50,width: 320,color: Colors.white,
                  child: const Align(alignment: Alignment.center,
-                  child: Text('Tech House')),),
+                  child: Text('Tech House',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),),
                ),
 
 

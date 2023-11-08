@@ -15,76 +15,78 @@ class Friendsscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(leading:IconButton(onPressed: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottombar(),));
-      }, icon: Icon(Icons.arrow_back,color: Colors.black,)),
-    
-    
-         backgroundColor: Color.fromARGB(255, 22, 140, 124),elevation: 0, title: Text('Friends',style: TextStyle(fontWeight: FontWeight.bold,fontSize:26,color: Colors.black ,),),
-    ),
-    body: Column(
-      children: [
-        Row(
-          children: [
-            SizedBox(width: 280,),
-        IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Colors.black,)),
-            SizedBox(width: 10,),
-          IconButton(onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
-          }, icon: Icon(Icons.person_add))
-          ],
-        
-        ),
-        Expanded(
-          child: Builder(
-            builder: (context) {
-              return ValueListenableBuilder(
-                valueListenable: contactListNotifier,
-                builder:(BuildContext ctx,List<ContactList> contactList,Widget? child){
-                   return ListView.builder(
-  itemBuilder: (ctx, index) {
-    final data = contactList[index];
-    return ListTile(
-      title: Text(data.name),
-      subtitle: Text(data.number),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(leading:IconButton(onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottombar(),));
+        }, icon: Icon(Icons.arrow_back,color: Colors.black,)),
+      
+      
+           backgroundColor: Color.fromARGB(255, 22, 140, 124),elevation: 0, title: Text('Friends',style: TextStyle(fontWeight: FontWeight.bold,fontSize:26,color: Colors.black ,),),
+      ),
+      body: Column(
         children: [
-          IconButton(
-            onPressed: () {
-              
-           Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  EditContacts(
-                                                  name: data.name,
-                                                  number:data.number,
-                                                  index:index,
-            ),));
-             
-             
-            },
-            icon: Icon(Icons.edit, color: const Color.fromARGB(255, 133, 130, 130)),
+          Row(
+            children: [
+              SizedBox(width: 280,),
+          IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Colors.black,)),
+              SizedBox(width: 10,),
+            IconButton(onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
+            }, icon: Icon(Icons.person_add))
+            ],
+          
           ),
-          IconButton(
-            onPressed: () {
-              deleteContacts(index);
-            },
-            icon: Icon(Icons.delete, color: const Color.fromARGB(255, 145, 39, 31)),
-          ),
+          Expanded(
+            child: Builder(
+              builder: (context) {
+                return ValueListenableBuilder(
+                  valueListenable: contactListNotifier,
+                  builder:(BuildContext ctx,List<ContactList> contactList,Widget? child){
+                     return ListView.builder(
+      itemBuilder: (ctx, index) {
+      final data = contactList[index];
+      return ListTile(
+        title: Text(data.name),
+        subtitle: Text(data.number),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              onPressed: () {
+                
+             Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  EditContacts(
+                                                    name: data.name,
+                                                    number:data.number,
+                                                    index:index,
+              ),));
+               
+               
+              },
+              icon: Icon(Icons.edit, color: Colors.grey),
+            ),
+            IconButton(
+              onPressed: () {
+                deleteContacts(index);
+              },
+              icon: Icon(Icons.delete, color:Colors.grey),
+            ),
+          ],
+        ),
+      );
+      },
+      itemCount: contactList.length,
+    );
+                  }
+                  );
+                   }
+                  ),
+                  ),
+                  
+         
         ],
       ),
-    );
-  },
-  itemCount: contactList.length,
-);
-                }
-                );
-                 }
-                ),
-                ),
-                
-       
-      ],
-    ),
+      ),
     );
   }
 
