@@ -97,7 +97,7 @@ class Firstgroup extends StatelessWidget {
                       Widget? child) {
                     return ListView.builder(
                       itemBuilder: (ctx, index) {
-                        final data = contactList[index];
+                        final data = contactList[index]; 
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
@@ -114,8 +114,7 @@ class Firstgroup extends StatelessWidget {
         ),
       ),
     );
-  }
-
+  }   
   ListTile list(
       {required IconData icon,
       required String title,

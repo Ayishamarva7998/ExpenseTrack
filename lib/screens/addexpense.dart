@@ -106,7 +106,8 @@ class _AddexpenseState extends State<Addexpense> {
     return DropdownMenuItem<String>(
       value: item,
       child: Text(item,  style: TextStyle(
-          color: item == 'income' ? Color.fromARGB(255, 15, 72, 17) : item == 'expense' ? Colors.red : Colors.black,
+          color: item == 'income' ? Color.fromARGB(255, 15, 72, 17) :
+           item == 'expense' ? Colors.red : Colors.black,
         ),),
      
       
