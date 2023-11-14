@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -35,7 +34,7 @@ void editContacts(index,ContactList value) async {
    contactListNotifier.notifyListeners();
   contactDB.putAt(index, value);
   getAllcontacts();
-}
+} 
   
 
  

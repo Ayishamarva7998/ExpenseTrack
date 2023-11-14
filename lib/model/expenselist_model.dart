@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-part 'data_model2.g.dart';
+part 'expenselist_model.g.dart';
 
 
 @HiveType(typeId: 2)

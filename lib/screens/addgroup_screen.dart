@@ -4,7 +4,7 @@ import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/functions/grouplist_fn.dart';
 import 'package:splitwise_app/model/contactlist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
-import 'package:splitwise_app/screens/addcontact.dart';
+import 'package:splitwise_app/screens/addcontact_screen.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
@@ -14,9 +14,12 @@ class Addgroup extends StatefulWidget {
   State<Addgroup> createState() => _AddgroupState();
 }
 
-List<bool> _isChecked = List.generate(contactListNotifier.value.length, (index) => false);
+List<bool> _isChecked =
+    List.generate(contactListNotifier.value.length, (index) => false);
 
 class _AddgroupState extends State<Addgroup> {
+  List<ContactList> selectedContacts = [];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,9 +27,14 @@ class _AddgroupState extends State<Addgroup> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottombar(),));
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => bottombar(),
+              ));
             },
-            icon: Icon(Icons.arrow_back,color: Colors.black,),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
           ),
           backgroundColor: Color.fromARGB(255, 22, 140, 124),
           elevation: 0,
@@ -43,15 +51,21 @@ class _AddgroupState extends State<Addgroup> {
           children: [
             Row(
               children: [
-                SizedBox(width: 280,),
+                SizedBox(
+                  width: 240,
+                ),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.search),
                 ),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Addcontact(),));
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Addcontact(),
+                    ));
                   },
                   icon: Icon(Icons.person_add),
                 ),
@@ -62,26 +76,30 @@ class _AddgroupState extends State<Addgroup> {
                 builder: (context) {
                   return ValueListenableBuilder(
                     valueListenable: contactListNotifier,
-                    builder: (BuildContext ctx, List<ContactList> contactList, Widget? child) {
+                    builder: (BuildContext ctx, List<ContactList> contactList,
+                        Widget? child) {
                       return ListView.builder(
-                      //  shrinkWrap: true,
                         itemBuilder: (ctx, index) {
-                        final data = contactList[index];  
-                        return ListTile(
-                          title: Text(data.name),
-                          subtitle: Text(data.number),
-                          trailing: Checkbox(
-                            value:data.isDone,
-                            onChanged: (newvalue) {
-                              setState(() {
-                               data.isDone=newvalue!;
-                               addcheck(index, data);
-                              }); 
-                            },
-                          ),
-                        );
-                      },
-                      itemCount: contactList.length,
+                          final data = contactList[index];
+                          return ListTile(
+                            title: Text(data.name),
+                            subtitle: Text(data.number),
+                            trailing: Checkbox(
+                              value: data.isDone,
+                              onChanged: (newvalue) {
+                                setState(() {
+                                  data.isDone = newvalue!;
+                                  if (newvalue!) {
+                                    selectedContacts.add(data);
+                                  } else {
+                                    selectedContacts.remove(data);
+                                  }
+                                });
+                              },
+                            ),
+                          );
+                        },
+                        itemCount: contactList.length,
                       );
                     },
                   );
@@ -97,17 +115,18 @@ class _AddgroupState extends State<Addgroup> {
                 },
                 label: Text('Make a Group'),
               ),
-            ),  
-          ], 
+            ),
+          ],
         ),
       ),
     );
   }
+
   void navigateToMakeGroupDialog(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) {
-          return MakeGroupDialog();
+          return MakeGroupDialog(selectedContacts: selectedContacts);
         },
       ),
     );
@@ -115,11 +134,17 @@ class _AddgroupState extends State<Addgroup> {
 }
 
 class MakeGroupDialog extends StatelessWidget {
+  final List<ContactList> selectedContacts;
+
+  MakeGroupDialog({required this.selectedContacts});
+
+  final TextEditingController groupNameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text("Group Name"),
-      content: TextField(),
+      content: TextField(controller: groupNameController),
       actions: [
         TextButton(
           onPressed: () {
@@ -129,11 +154,25 @@ class MakeGroupDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Groupscreen(group: GroupList(contacts: '', groupname: '',isdone: false)),));
+            studentAdder(context);
           },
           child: Text("OK"),
         ),
       ],
     );
+  }
+
+  void studentAdder(context) {
+    final groupname = groupNameController.text.trim();
+    if (groupname.isNotEmpty) {
+      final group =
+          GroupList(contacts: '', groupname: groupname, isdone: false);
+      addGroup(group);
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => Groupscreen(),
+        ),
+      );
+    }
   }
 }

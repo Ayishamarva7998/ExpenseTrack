@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-part 'data_model3.g.dart';
+part 'grouplist_model.g.dart';
 
 
 @HiveType(typeId: 3)
@@ -13,8 +13,6 @@ class GroupList{
 
   @HiveField(2)
   late bool isdone;
-
-  
 
    
   GroupList({required this.contacts,required this.groupname,required this.isdone});

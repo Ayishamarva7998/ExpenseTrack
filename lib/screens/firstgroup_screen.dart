@@ -4,7 +4,7 @@ import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
-import 'package:splitwise_app/screens/participants.dart';
+import 'package:splitwise_app/screens/participants_screen.dart';
 
 class Firstgroup extends StatelessWidget {
   ExpenseList expense;
@@ -39,22 +39,21 @@ class Firstgroup extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      Members(memebers: GroupList(contacts: '', groupname: '',isdone:false )),
+                  builder: (context) => Participants(
+                      memebers: GroupList(
+                          contacts: '', groupname: '', isdone: false)),
                 ));
               },
-              
-              child:
-             const Row
-             (mainAxisAlignment: MainAxisAlignment.end,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     'Participants',
-                    
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Icon(
                     Icons.group_add,
                     size: 22,
@@ -97,11 +96,11 @@ class Firstgroup extends StatelessWidget {
                       Widget? child) {
                     return ListView.builder(
                       itemBuilder: (ctx, index) {
-                        final data = contactList[index]; 
+                        final data = contactList[index];
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
-                          trailing: Text(data.select ),
+                          trailing: Text(data.select),
                         );
                       },
                       itemCount: contactList.length,
@@ -114,7 +113,8 @@ class Firstgroup extends StatelessWidget {
         ),
       ),
     );
-  }   
+  }
+
   ListTile list(
       {required IconData icon,
       required String title,
