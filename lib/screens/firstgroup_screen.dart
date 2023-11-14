@@ -3,16 +3,18 @@ import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
-import 'package:splitwise_app/screens/groups_screen.dart';
 import 'package:splitwise_app/screens/participants_screen.dart';
 
 class Firstgroup extends StatelessWidget {
   ExpenseList expense;
   Firstgroup({Key? key, required this.expense}) : super(key: key);
   List expenseList = [];
+  
 
   @override
+  
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

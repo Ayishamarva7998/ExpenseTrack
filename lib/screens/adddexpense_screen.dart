@@ -20,7 +20,6 @@ class _AddexpenseState extends State<Addexpense> {
   final _descriptionController = TextEditingController();
   final _amountController = TextEditingController();
   final _selectController = TextEditingController();
-
   String selectedCategory = 'income';
   var items = ['income', 'expense'];
   final List group = List.generate(groupListNotifier.value.length, (index) {
