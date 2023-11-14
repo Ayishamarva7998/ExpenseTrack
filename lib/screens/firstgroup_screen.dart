@@ -100,7 +100,16 @@ class Firstgroup extends StatelessWidget {
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
-                          trailing: Text(data.select),
+                          trailing: Text(
+                            data.select,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: data.select == 'income'
+                                  ? Colors.green
+                                  : Colors.red,
+                            ),
+                          ),
                         );
                       },
                       itemCount: contactList.length,
