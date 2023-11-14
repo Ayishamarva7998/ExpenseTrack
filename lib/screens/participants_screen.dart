@@ -22,7 +22,7 @@ class _MembersState extends State<Participants> {
         appBar: AppBar(
           actions: const [],
           backgroundColor: Color.fromARGB(255, 22, 140, 124),
-          title: Text(
+          title: const Text(
             'Participants',
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
@@ -30,7 +30,7 @@ class _MembersState extends State<Participants> {
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
