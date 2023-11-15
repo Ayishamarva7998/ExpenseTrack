@@ -10,7 +10,7 @@ class ExpenseList{
 
   @HiveField(1)
   final String amount;
-
+ 
   @HiveField(2)
   final String select;
 

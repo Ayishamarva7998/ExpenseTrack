@@ -5,11 +5,19 @@ import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/participants_screen.dart';
 
-class Firstgroup extends StatelessWidget {
+class Firstgroup extends StatefulWidget {
   ExpenseList expense;
   Firstgroup({Key? key, required this.expense}) : super(key: key);
+
+  @override
+  State<Firstgroup> createState() => _FirstgroupState();
+}
+
+class _FirstgroupState extends State<Firstgroup> {
+  // DateTime date = DateTime.now();
+  // String? selectedItem;
+  // String? Stateme
   List expenseList = [];
-  
 
   @override
   
@@ -87,8 +95,9 @@ class Firstgroup extends StatelessWidget {
             const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'Oct 19',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              
+                  'Date',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                  
                 )),
             Expanded(
               child: Builder(builder: (context) {

@@ -5,7 +5,7 @@ import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/adddexpense_screen.dart';
 import 'package:splitwise_app/screens/addgroup_screen.dart';
 import 'package:splitwise_app/screens/firstgroup_screen.dart';
-import 'package:splitwise_app/screens/friends_screen.dart';
+
 
 class Groupscreen extends StatelessWidget {
   //  GroupList group;
