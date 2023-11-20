@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
+import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
@@ -14,6 +15,7 @@ class Firstgroup extends StatefulWidget {
 }
 
 class _FirstgroupState extends State<Firstgroup> {
+
  
   List expenseList = [];
 
@@ -109,16 +111,17 @@ class _FirstgroupState extends State<Firstgroup> {
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
-                          trailing: Text(
-                            data.select,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: data.select == 'income'
-                                  ? Colors.green
-                                  : Colors.red,
-                            ),
-                          ),
+                          trailing: Row(mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(onPressed: (){
+                              deleteExpense(index);
+                              }, icon: Icon(Icons.delete,color: Color.fromARGB(255, 219, 218, 218),),
+                              ),
+                              Text(data.select,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,
+                              color: data.select == 'income'? Colors.green:Colors.red),)
+
+                            ],
+                          )
                         );
                       },
                       itemCount: contactList.length,

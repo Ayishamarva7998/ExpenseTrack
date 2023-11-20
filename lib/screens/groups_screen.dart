@@ -6,14 +6,8 @@ import 'package:splitwise_app/screens/adddexpense_screen.dart';
 import 'package:splitwise_app/screens/addgroup_screen.dart';
 import 'package:splitwise_app/screens/firstgroup_screen.dart';
 
-
 class Groupscreen extends StatelessWidget {
-  //  GroupList group;
-  // final groupname;
-
   Groupscreen({Key? key}) : super(key: key);
-
-  // List groupList =[];
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +40,18 @@ class Groupscreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-
-              //  ListTile(
-              //      title: Text('asdsad'),
-
-              //  ),
-
+              TextButton(
+                  onPressed: () {
+                    
+                  },
+                  child: const Text(
+                    'show groups',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  )),
               SizedBox(height: 30),
-
               Container(
                 height: 200,
                 child: Builder(
@@ -86,7 +80,6 @@ class Groupscreen extends StatelessWidget {
                   },
                 ),
               ),
-
               SizedBox(height: 30),
               GestureDetector(
                 onTap: () {
