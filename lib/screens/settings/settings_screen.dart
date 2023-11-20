@@ -12,7 +12,7 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.white,elevation: 0,title:
        const Text('Settings',style: TextStyle(
-        color: Colors.black,fontWeight: FontWeight.bold,fontSize: 26),),),
+        color: Colors.black,fontWeight: FontWeight.bold,fontSize: 26),),centerTitle: true,),
       body: Padding(
         padding: const EdgeInsets.all(11),
         child: Column(

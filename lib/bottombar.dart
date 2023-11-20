@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/model/contactlist_model.dart';
-import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/chart_screen.dart';
 import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';

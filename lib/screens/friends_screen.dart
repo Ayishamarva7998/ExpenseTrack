@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
@@ -5,30 +7,55 @@ import 'package:splitwise_app/model/contactlist_model.dart';
 import 'package:splitwise_app/screens/addcontact_screen.dart';
 import 'package:splitwise_app/screens/edit_screen.dart';
 
-class Friendsscreen extends StatelessWidget {
+class Friendsscreen extends StatefulWidget {
   ContactList contact;
   Friendsscreen({Key? key, required this.contact}) : super(key: key);
 
+  @override
+  State<Friendsscreen> createState() => _FriendsscreenState();
+}
+
+class _FriendsscreenState extends State<Friendsscreen> {
+ 
   List contactList = [];
+  String _search ='';
+  List<ContactList>filteredContactList =[];
+  List<ContactList> details=[];
+ 
+
+  @override
+  void initState(){
+    super.initState();
+    getAllcontacts();
+  }
+  void filteredContact() {
+    setState(() {
+      filteredContactList = contactListNotifier.value
+          .where((ContactList) =>
+              ContactList.name.toLowerCase().contains(_search.toLowerCase()))
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => bottombar(),
                 ));
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
               )),
           backgroundColor: Color.fromARGB(255, 22, 140, 124),
           elevation: 0,
-          title: Text(
+          title: const Text(
             'Friends',
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -36,31 +63,37 @@ class Friendsscreen extends StatelessWidget {
               color: Colors.black,
             ),
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Addcontact(),
+                  ));
+                },
+                icon: Icon(Icons.person_add),color: Colors.black)
+          ],
         ),
         body: Column(
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 280,
-                ),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.search,
-                      color: Colors.black,
-                    )),
-                SizedBox(
-                  width: 10,
-                ),
-                IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Addcontact(),
-                      ));
-                    },
-                    icon: Icon(Icons.person_add))
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'search contacts',
+                    fillColor: const Color.fromARGB(255, 237, 235, 235),
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    prefixIcon: Icon(Icons.search),
+                   
+                     ),
+                onChanged: (value) {
+                  setState(() {
+                    _search = value;
+                    filteredContact(); 
+                  });
+                },
+              ),
             ),
             Expanded(
               child: Builder(builder: (context) {
@@ -68,9 +101,10 @@ class Friendsscreen extends StatelessWidget {
                     valueListenable: contactListNotifier,
                     builder: (BuildContext ctx, List<ContactList> contactList,
                         Widget? child) {
+                          final displaylist = filteredContactList.isNotEmpty? filteredContactList : contactList;
                       return ListView.builder(
                         itemBuilder: (ctx, index) {
-                          final data = contactList[index];
+                          final data = displaylist[index];
                           return ListTile(
                             title: Text(data.name),
                             subtitle: Text(data.number),
@@ -100,7 +134,7 @@ class Friendsscreen extends StatelessWidget {
                             ),
                           );
                         },
-                        itemCount: contactList.length,
+                        itemCount: displaylist.length,
                       );
                     });
               }),
@@ -110,6 +144,9 @@ class Friendsscreen extends StatelessWidget {
       ),
     );
   }
+
+  
+}
 
   Row contactlist({required String name, required String number}) {
     return Row(
@@ -130,7 +167,7 @@ class Friendsscreen extends StatelessWidget {
                       alignment: Alignment.topRight,
                       child: Text(
                         name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                       ),
                     ),
@@ -141,17 +178,17 @@ class Friendsscreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 60,
               ),
-              Icon(
+              const Icon(
                 Icons.edit,
                 color: Color.fromARGB(255, 133, 130, 130),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
-              Icon(
+              const Icon(
                 Icons.delete,
                 color: Color.fromARGB(255, 177, 32, 21),
               )
@@ -161,4 +198,4 @@ class Friendsscreen extends StatelessWidget {
       ],
     );
   }
-}
+

@@ -23,8 +23,8 @@ class Groupscreen extends StatelessWidget {
           child: Column(
             children: [
               Image.asset('assets/billss.jpg'),
-              SizedBox(
-                height: 20,
+              const SizedBox(
+                height: 10,
               ),
               GestureDetector(
                 onTap: () {
@@ -48,7 +48,7 @@ class Groupscreen extends StatelessWidget {
               ),
 
               SizedBox(
-                height: 50,
+                height: 10,
               ),
 
               //  ListTile(

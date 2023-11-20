@@ -5,7 +5,6 @@ import 'package:splitwise_app/functions/grouplist_fn.dart';
 import 'package:splitwise_app/model/contactlist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/addcontact_screen.dart';
-import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 
 class Addgroup extends StatefulWidget {
@@ -31,7 +30,7 @@ class _AddgroupState extends State<Addgroup> {
                 builder: (context) => bottombar(),
               ));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
@@ -51,14 +50,14 @@ class _AddgroupState extends State<Addgroup> {
           children: [
             Row(
               children: [
-                SizedBox(
-                  width: 240,
+                const SizedBox(
+                  width: 280,
                 ),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.search),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 IconButton(

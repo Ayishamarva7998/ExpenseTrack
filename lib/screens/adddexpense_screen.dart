@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
-import 'package:splitwise_app/functions/contactlist_fn.dart';
-import 'package:splitwise_app/functions/grouplist_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
-import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/firstgroup_screen.dart';
 
 class Addexpense extends StatefulWidget {
@@ -63,7 +60,7 @@ class _AddexpenseState extends State<Addexpense> {
               'Tech House',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -107,7 +104,7 @@ class _AddexpenseState extends State<Addexpense> {
                   //     ),
                   //   ),
                   // ),
-                  Icon(
+                  const Icon(
                     Icons.expand_more,
                     color: Colors.white,
                   ),

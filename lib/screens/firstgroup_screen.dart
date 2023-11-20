@@ -14,9 +14,7 @@ class Firstgroup extends StatefulWidget {
 }
 
 class _FirstgroupState extends State<Firstgroup> {
-  // DateTime date = DateTime.now();
-  // String? selectedItem;
-  // String? Stateme
+ 
   List expenseList = [];
 
   @override
@@ -96,7 +94,7 @@ class _FirstgroupState extends State<Firstgroup> {
                 alignment: Alignment.topLeft,
                 child: Text(
               
-                  'Date',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                  'Oct 1',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
                   
                 )),
             Expanded(
