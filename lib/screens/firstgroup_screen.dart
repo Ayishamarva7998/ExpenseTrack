@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
@@ -15,14 +16,27 @@ class Firstgroup extends StatefulWidget {
 }
 
 class _FirstgroupState extends State<Firstgroup> {
+  List<ExpenseList> expenseList = [];
 
- 
-  List expenseList = [];
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
 
   @override
-  
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -32,17 +46,27 @@ class _FirstgroupState extends State<Firstgroup> {
                 fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
           ),
           leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => bottombar(),
-                ));
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-              )),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => bottombar(),
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+          ),
           backgroundColor: Color.fromARGB(255, 22, 140, 124),
           elevation: 0,
+          actions: [
+            IconButton(
+              onPressed: () => _selectDate(context),
+              icon: Icon(
+                Icons.calendar_today,
+                color: Colors.black,
+              ),
+            ),
+          ],
         ),
         body: Column(
           children: [
@@ -50,8 +74,12 @@ class _FirstgroupState extends State<Firstgroup> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => Participants(
-                      memebers: GroupList(
-                          contacts: '', groupname: '', isdone: false)),
+                    memebers: GroupList(
+                      contacts: '',
+                      groupname: '',
+                      isdone: false,
+                    ),
+                  ),
                 ));
               },
               child: const Row(
@@ -75,30 +103,35 @@ class _FirstgroupState extends State<Firstgroup> {
               height: 50,
             ),
             const Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  'Total Income:1069.00',
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                )),
+              alignment: Alignment.topRight,
+              child: Text(
+                'Total Income:1069.00',
+                style: TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15),
+              ),
+            ),
             const Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  'total Expense:120.00',
-                  style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                )),
+              alignment: Alignment.topRight,
+              child: Text(
+                'total Expense:120.00',
+                style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15),
+              ),
+            ),
             const Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-              
-                  'Oct 1',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
-                  
-                )),
+              alignment: Alignment.topLeft,
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                '${DateFormat('yyyy-MM-dd').format(selectedDate)}',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
             Expanded(
               child: Builder(builder: (context) {
                 return ValueListenableBuilder(
@@ -111,17 +144,28 @@ class _FirstgroupState extends State<Firstgroup> {
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
-                          trailing: Row(mainAxisSize: MainAxisSize.min,
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
-                              IconButton(onPressed: (){
-                              deleteExpense(index);
-                              }, icon: Icon(Icons.delete,color: Color.fromARGB(255, 219, 218, 218),),
+                              IconButton(
+                                onPressed: () {
+                                  deleteExpense(index);
+                                },
+                                icon: Icon(Icons.delete,
+                                    color: Color.fromARGB(255, 219, 218, 218)),
                               ),
-                              Text(data.select,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,
-                              color: data.select == 'income'? Colors.green:Colors.red),)
-
+                              Text(
+                                data.select,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: data.select == 'income'
+                                      ? Colors.green
+                                      : Colors.red,
+                                ),
+                              ),
                             ],
-                          )
+                          ),
                         );
                       },
                       itemCount: contactList.length,
@@ -132,37 +176,6 @@ class _FirstgroupState extends State<Firstgroup> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  ListTile list(
-      {required IconData icon,
-      required String title,
-      required String text1,
-      required String text2,
-      required String amount}) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(
-        title,
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      subtitle: Text(text1),
-      trailing: Column(
-        children: [
-          Text(
-            text2,
-            style: const TextStyle(color: Colors.red),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            amount,
-            style: TextStyle(color: Colors.red),
-          )
-        ],
       ),
     );
   }
