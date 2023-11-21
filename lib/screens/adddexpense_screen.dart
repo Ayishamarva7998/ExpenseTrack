@@ -196,8 +196,9 @@ class _AddexpenseState extends State<Addexpense> {
     final _description = _descriptionController.text.trim();
     final _amount = _amountController.text.trim();
     final _select = _selectController.text.trim();
+    // final _whopaid = _whopaidController.text.trim();
    
-    if (_description.isEmpty || _amount.isEmpty || _select.isEmpty ) {
+    if (_description.isEmpty || _amount.isEmpty || _select.isEmpty  ) {
       return;
     } else {
       Navigator.of(context).push(MaterialPageRoute(
@@ -205,7 +206,9 @@ class _AddexpenseState extends State<Addexpense> {
           expense: ExpenseList(
             description: _description,
             amount: _amount,
+             
             select: _select,
+           
            
           ),
         ),
@@ -216,6 +219,7 @@ class _AddexpenseState extends State<Addexpense> {
       description: _description,
       amount: _amount,
       select: _select,
+     
     );
 
     addExpense(_expense);
