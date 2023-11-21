@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
-import 'package:splitwise_app/screens/firstgroup_screen.dart';
+import 'package:splitwise_app/screens/techhouse.dart';
 
 class Addexpense extends StatefulWidget {
   Addexpense({
@@ -209,7 +209,6 @@ class _AddexpenseState extends State<Addexpense> {
       description: _description,
       amount: _amount,
       select: _select,
-      
     );
 
     addExpense(_expense);

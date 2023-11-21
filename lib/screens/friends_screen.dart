@@ -70,7 +70,7 @@ class _FriendsscreenState extends State<Friendsscreen> {
                     builder: (context) => Addcontact(),
                   ));
                 },
-                icon: Icon(Icons.person_add),color: Colors.black)
+                icon: const Icon(Icons.person_add),color: Colors.black)
           ],
         ),
         body: Column(
@@ -84,7 +84,7 @@ class _FriendsscreenState extends State<Friendsscreen> {
                     filled: true,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                    
                      ),
                 onChanged: (value) {

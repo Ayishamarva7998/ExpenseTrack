@@ -54,13 +54,7 @@ class loginpage extends StatelessWidget {
         ],
         
       ),
-      
-      
       ),
-      
-    
-      
-     
     );
     
   }

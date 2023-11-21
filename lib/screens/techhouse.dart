@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:splitwise_app/bottombar.dart';
-import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
@@ -16,8 +15,11 @@ class Firstgroup extends StatefulWidget {
 }
 
 class _FirstgroupState extends State<Firstgroup> {
+  
   List<ExpenseList> expenseList = [];
 
+  double totalamount = total(expenseListNotifier.value);
+ 
   DateTime selectedDate = DateTime.now();
 
   Future<void> _selectDate(BuildContext context) async {
@@ -61,7 +63,7 @@ class _FirstgroupState extends State<Firstgroup> {
           actions: [
             IconButton(
               onPressed: () => _selectDate(context),
-              icon: Icon(
+              icon: const Icon(
                 Icons.calendar_today,
                 color: Colors.black,
               ),
@@ -102,26 +104,17 @@ class _FirstgroupState extends State<Firstgroup> {
             const SizedBox(
               height: 50,
             ),
-            const Align(
+             Align(
               alignment: Alignment.topRight,
               child: Text(
-                'Total Income:1069.00',
-                style: TextStyle(
-                    color: Colors.red,
+                "Total Amount:- ${totalamount}",
+                style: const TextStyle(
+                    color: Colors.blue,
                     fontWeight: FontWeight.bold,
-                    fontSize: 15),
+                    fontSize: 20),
               ),
             ),
-            const Align(
-              alignment: Alignment.topRight,
-              child: Text(
-                'total Expense:120.00',
-                style: TextStyle(
-                    color: Colors.green,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15),
-              ),
-            ),
+            
             const Align(
               alignment: Alignment.topLeft,
             ),
@@ -136,11 +129,11 @@ class _FirstgroupState extends State<Firstgroup> {
               child: Builder(builder: (context) {
                 return ValueListenableBuilder(
                   valueListenable: expenseListNotifier,
-                  builder: (BuildContext ctx, List<ExpenseList> contactList,
+                  builder: (BuildContext ctx, List<ExpenseList>expenseList,
                       Widget? child) {
                     return ListView.builder(
                       itemBuilder: (ctx, index) {
-                        final data = contactList[index];
+                        final data = expenseList[index];
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
@@ -151,7 +144,7 @@ class _FirstgroupState extends State<Firstgroup> {
                                 onPressed: () {
                                   deleteExpense(index);
                                 },
-                                icon: Icon(Icons.delete,
+                                icon: const Icon(Icons.delete,
                                     color: Color.fromARGB(255, 219, 218, 218)),
                               ),
                               Text(
@@ -168,7 +161,7 @@ class _FirstgroupState extends State<Firstgroup> {
                           ),
                         );
                       },
-                      itemCount: contactList.length,
+                      itemCount: expenseList.length,
                     );
                   },
                 );
@@ -179,4 +172,6 @@ class _FirstgroupState extends State<Firstgroup> {
       ),
     );
   }
+
+
 }

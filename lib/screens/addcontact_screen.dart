@@ -21,6 +21,13 @@ class Addcontact extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 30, right: 30),
                 child: TextFormField(
                   controller: _nameController,
+                  validator:(value) {
+                    if(value == null||value.isEmpty){
+                      return 'value is empty';
+                    }else{
+                      return null;
+                    }
+                  }, 
                   decoration: InputDecoration(
                       hintText: 'name',
                       prefixIcon: Icon(Icons.person),
@@ -34,6 +41,13 @@ class Addcontact extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
                 child: TextFormField(
                   controller: _numberController,
+                   validator:(value) {
+                    if(value == null||value.isEmpty){
+                      return 'value is empty';
+                    }else{
+                      return null;
+                    }
+                  }, 
                   decoration: InputDecoration(
                       hintText: 'phone no',
                       prefixIcon: Icon(Icons.phone),
@@ -44,13 +58,12 @@ class Addcontact extends StatelessWidget {
                   maxLength: 10,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               GestureDetector(
                 onTap: () {
                   onAddStudentButtonClicked(context);
-                  _showPopup(context);
                 },
                 child: Container(
                   height: 60,
@@ -95,6 +108,7 @@ class Addcontact extends StatelessWidget {
     final _contact = ContactList(name: _name, number: _number, isDone: false);
 
     addContact(_contact);
+    _showPopup(context);
   }
 
   Future<void> _showPopup(BuildContext context) async {

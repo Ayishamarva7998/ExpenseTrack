@@ -23,5 +23,13 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
   getAllexpense();
  }
 
+     double total( expense){
+    double totalamount = 0;
+    for(var expenses in expense){
+      totalamount+=double.parse(expenses.amount);
+    }
+    return totalamount;
+  }
+
 
  
