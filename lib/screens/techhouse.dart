@@ -111,7 +111,7 @@ class _FirstgroupState extends State<Firstgroup> {
                 style: const TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                    fontSize: 18),
               ),
             ),
             

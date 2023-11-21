@@ -3,6 +3,8 @@ import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/screens/techhouse.dart';
+import 'package:flutter/services.dart'; 
+
 
 class Addexpense extends StatefulWidget {
   Addexpense({
@@ -79,18 +81,23 @@ class _AddexpenseState extends State<Addexpense> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  TextFormField(
-                    controller: _amountController,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.currency_rupee),
-                      hintText: 'amount',
-                      fillColor: Color.fromARGB(255, 231, 230, 230),
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
+                 TextFormField(
+  controller: _amountController,
+  decoration: InputDecoration(
+    prefixIcon: Icon(Icons.currency_rupee),
+    hintText: 'amount',
+    fillColor: Color.fromARGB(255, 231, 230, 230),
+    filled: true,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+  ),
+  keyboardType: TextInputType.number, 
+  inputFormatters: [
+    FilteringTextInputFormatter.digitsOnly, 
+  ],
+),
+
                   SizedBox(height: 20),
                   // TextFormField(
                   //   controller: _whopaidController,
@@ -219,8 +226,8 @@ class _AddexpenseState extends State<Addexpense> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Expense Saved'),
-          content: Text('Your expense has been successfully saved.'),
+          title: const Text('Expense Saved'),
+          content: const Text('Your expense has been successfully saved.'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
