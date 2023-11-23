@@ -5,6 +5,9 @@ part 'expenselist_model.g.dart';
 @HiveType(typeId: 2)
 class ExpenseList{
 
+  // @HiveField(0)
+  // final String id;
+
   @HiveField(0)
   final String description;
 
@@ -13,6 +16,9 @@ class ExpenseList{
  
   @HiveField(2)
   final String select;
+
+  // @HiveField(3)
+  // final String groupId;
 
  
    

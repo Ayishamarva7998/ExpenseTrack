@@ -73,7 +73,9 @@ class Groupscreen extends StatelessWidget {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => ListScreen(),
                                 ));
+                                
                               },
+                              
                               title: Text(data.contacts),
                               subtitle: Text(data.groupname),
                             );
@@ -85,7 +87,7 @@ class Groupscreen extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -104,25 +106,25 @@ class Groupscreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Addexpense()));
-                },
-                child: Container(
-                  height: 55,
-                  width: 360,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Color.fromARGB(255, 22, 140, 124),
-                  ),
-                  child: const Center(
-                    child: Text('Add Expenses',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
-                  ),
-                ),
-              )
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.of(context).push(
+              //         MaterialPageRoute(builder: (context) => Addexpense()));
+              //   },
+              //   child: Container(
+              //     height: 55,
+              //     width: 360,
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(30),
+              //       color: Color.fromARGB(255, 22, 140, 124),
+              //     ),
+              //     child: const Center(
+              //       child: Text('Add Expenses',
+              //           style: TextStyle(
+              //               fontWeight: FontWeight.bold, fontSize: 20)),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),

@@ -17,6 +17,7 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
 
     
    }
+
    Future<void> deleteExpense(int index) async {
   final expenseDB = await Hive.openBox<ExpenseList>('expense_db');
   expenseDB.deleteAt(index);
@@ -30,6 +31,11 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
     }
     return totalamount;
   }
+  // String getExpenseID(int index){
+  //   return expenseListNotifier.value[index].id;
+    
+  // }
 
+   
 
  

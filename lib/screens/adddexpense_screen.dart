@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
+import 'package:splitwise_app/screens/list_screen.dart';
 import 'package:splitwise_app/screens/techhouse.dart';
 import 'package:flutter/services.dart'; 
 
 
+
 class Addexpense extends StatefulWidget {
   Addexpense({
-    Key? key,
+    Key? key, required String groupId,
   }) : super(key: key);
 
   @override
@@ -55,13 +57,7 @@ class _AddexpenseState extends State<Addexpense> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
-            const Text(
-              'Tech House',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
+          
             const SizedBox(height: 100),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -166,6 +162,10 @@ class _AddexpenseState extends State<Addexpense> {
                       onAddExpenseButtonClicked(context);
                       _showPopup(context);
                     },
+                    // child: ElevatedButton(onPressed: (){
+                    //   print('Button pressed with ID: $unique')
+                    // }, 
+                    // child: Text('save')),
                     child: Container(
                       height: 60,
                       decoration: BoxDecoration(
@@ -202,20 +202,23 @@ class _AddexpenseState extends State<Addexpense> {
       return;
     } else {
       Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => Firstgroup(
-          expense: ExpenseList(
-            description: _description,
-            amount: _amount,
-             
-            select: _select,
+        builder: (context) =>
+        ListScreen(),
+        //  Firstgroup(
+        //   expense: ExpenseList(
+        //     description: _description,
+        //     amount: _amount,
+          
+        //     select: _select,
            
            
-          ),
-        ),
+        //   ),
+        // ),
       ));
     }
     print('$_description $_amount');
     final _expense = ExpenseList(
+    
       description: _description,
       amount: _amount,
       select: _select,
