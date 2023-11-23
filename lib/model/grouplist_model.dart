@@ -14,6 +14,10 @@ class GroupList{
   @HiveField(2)
   late bool isdone;
 
+  // @HiveField(3)
+  // final String id;
+
+
    
   GroupList({required this.contacts,required this.groupname,required this.isdone});
  

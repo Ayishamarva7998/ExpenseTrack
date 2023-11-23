@@ -80,6 +80,7 @@ class _FirstgroupState extends State<Firstgroup> {
                       contacts: '',
                       groupname: '',
                       isdone: false,
+                      
                     ),
                   ),
                 ));

@@ -4,6 +4,7 @@ import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/adddexpense_screen.dart';
 import 'package:splitwise_app/screens/addgroup_screen.dart';
+import 'package:splitwise_app/screens/list_screen.dart';
 import 'package:splitwise_app/screens/techhouse.dart';
 
 class Groupscreen extends StatelessWidget {
@@ -63,10 +64,14 @@ class Groupscreen extends StatelessWidget {
                         return ListView.builder(
                           itemBuilder: (ctx, index) {
                             final data = groupList[index];
+                             Key tileKey = ObjectKey(data);
+                            String uniqueId  =tileKey.toString();
                             return ListTile(
+                              key: tileKey,
                               onTap: () {
+                                print('Unique ID:$uniqueId');
                                 Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Addexpense(),
+                                  builder: (context) => ListScreen(),
                                 ));
                               },
                               title: Text(data.contacts),
