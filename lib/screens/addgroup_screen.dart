@@ -107,73 +107,73 @@ class _AddgroupState extends State<Addgroup> {
                 },
               ),
             ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: FloatingActionButton.extended(
-                backgroundColor: Color.fromARGB(255, 92, 172, 162),
-                onPressed: () {
-                  navigateToMakeGroupDialog(context);
-                },
-                label: Text('Make a Group'),
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.topCenter,
+            //   child: FloatingActionButton.extended(
+            //     backgroundColor: Color.fromARGB(255, 92, 172, 162),
+            //     onPressed: () {
+            //       navigateToMakeGroupDialog(context);
+            //     },
+            //     label: Text('Make a Group'),
+            //   ),
+            // ),
           ],
         ),
       ),
     );
   }
 
-  void navigateToMakeGroupDialog(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) {
-          return MakeGroupDialog(selectedContacts: selectedContacts);
-        },
-      ),
-    );
-  }
+  // void navigateToMakeGroupDialog(BuildContext context) {
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (context) {
+  //         return MakeGroupDialog(selectedContacts: selectedContacts);
+  //       },
+  //     ),
+  //   );
+  // }
 }
 
-class MakeGroupDialog extends StatelessWidget {
-  final List<ContactList> selectedContacts;
+// class MakeGroupDialog extends StatelessWidget {
+//   final List<ContactList> selectedContacts;
 
-  MakeGroupDialog({required this.selectedContacts});
+//   MakeGroupDialog({required this.selectedContacts});
 
-  final TextEditingController groupNameController = TextEditingController();
+//   final TextEditingController groupNameController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("Group Name"),
-      content: TextField(controller: groupNameController),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text("Cancel"),
-        ),
-        TextButton(
-          onPressed: () {
-            studentAdder(context);
-          },
-          child: Text("OK"),
-        ),
-      ],
-    );
-  }
+//   @override
+//   Widget build(BuildContext context) {
+//     return AlertDialog(
+//       title: Text("Group Name"),
+//       content: TextField(controller: groupNameController),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             Navigator.of(context).pop();
+//           },
+//           child: Text("Cancel"),
+//         ),
+//         TextButton(
+//           onPressed: () {
+//             studentAdder(context);
+//           },
+//           child: Text("OK"),
+//         ),
+//       ],
+//     );
+//   }
 
-  void studentAdder(context) {
-    final groupname = groupNameController.text.trim();
-    if (groupname.isNotEmpty) {
-      final group =
-          GroupList(contacts: '', groupname: groupname, isdone: false);
-      addGroup(group);
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => Groupscreen(),
-        ),
-      );
-    }
-  }
-}
+//   void studentAdder(context) {
+//     final groupname = groupNameController.text.trim();
+//     if (groupname.isNotEmpty) {
+//       final group =
+//           GroupList(contacts: '', groupname: groupname, isdone: false);
+//       addGroup(group);
+//       Navigator.of(context).push(
+//         MaterialPageRoute(
+//           builder: (context) => Groupscreen(),
+//         ),
+//       );
+//     }
+//   }
+// }

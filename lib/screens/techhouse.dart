@@ -15,12 +15,13 @@ class Firstgroup extends StatefulWidget {
 }
 
 class _FirstgroupState extends State<Firstgroup> {
-  
   List<ExpenseList> expenseList = [];
-
+  String _search = '';
+  List<ExpenseList> filteredExpense = [];
+  List<ExpenseList> explist= [];
   double totalamount = total(expenseListNotifier.value);
- 
   DateTime selectedDate = DateTime.now();
+  String searchText = '';
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -36,8 +37,20 @@ class _FirstgroupState extends State<Firstgroup> {
       });
     }
   }
-
-  @override
+  void initState(){
+    super.initState();
+    getAllexpense();
+  }
+  void filteredData() {
+    setState(() {
+      filteredExpense = expenseListNotifier.value
+          .where((expenseList) =>
+              expenseList.description.toLowerCase().contains(_search.toLowerCase()))
+          .toList();
+    });
+  }
+  
+@override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -80,7 +93,6 @@ class _FirstgroupState extends State<Firstgroup> {
                       contacts: '',
                       groupname: '',
                       isdone: false,
-                      
                     ),
                   ),
                 ));
@@ -102,10 +114,36 @@ class _FirstgroupState extends State<Firstgroup> {
                 ],
               ),
             ),
+
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextFormField(
+              
+                decoration:  InputDecoration(
+                  labelText: 'Search Expense',
+                  fillColor: const Color.fromARGB(255, 226, 225, 225),
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),),
+                     prefixIcon: Icon(Icons.search)
+                ),
+                  onChanged: (value) {
+                  setState(() {
+                    _search = value;
+                       });
+                       filteredData();
+                       
+                   
+               
+                },
+              ),
+            ),
+
             const SizedBox(
               height: 50,
             ),
-             Align(
+
+            Align(
               alignment: Alignment.topRight,
               child: Text(
                 "Total Amount:- ${totalamount}",
@@ -115,10 +153,7 @@ class _FirstgroupState extends State<Firstgroup> {
                     fontSize: 18),
               ),
             ),
-            
-            const Align(
-              alignment: Alignment.topLeft,
-            ),
+
             Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -126,15 +161,18 @@ class _FirstgroupState extends State<Firstgroup> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
+
             Expanded(
               child: Builder(builder: (context) {
                 return ValueListenableBuilder(
                   valueListenable: expenseListNotifier,
-                  builder: (BuildContext ctx, List<ExpenseList>expenseList,
+                  builder: (BuildContext ctx, List<ExpenseList> expenseList,
                       Widget? child) {
+                        final list =filteredExpense.isNotEmpty?  filteredExpense:expenseList;
                     return ListView.builder(
                       itemBuilder: (ctx, index) {
-                        final data = expenseList[index];
+
+                        final data = list[index];
                         return ListTile(
                           title: Text(data.description),
                           subtitle: Text(data.amount),
@@ -162,7 +200,7 @@ class _FirstgroupState extends State<Firstgroup> {
                           ),
                         );
                       },
-                      itemCount: expenseList.length,
+                      itemCount:list.length,
                     );
                   },
                 );
@@ -173,6 +211,4 @@ class _FirstgroupState extends State<Firstgroup> {
       ),
     );
   }
-
-
 }

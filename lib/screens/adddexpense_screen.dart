@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/screens/list_screen.dart';
-// import 'package:splitwise_app/screens/techhouse.dart';
-import 'package:flutter/services.dart'; 
-
-
 
 class Addexpense extends StatefulWidget {
-  final String uniqueid;
+  // final String uniqueid;
+
   Addexpense({
-    required this.uniqueid,
+    // required this.uniqueid,
     Key? key,
   }) : super(key: key);
 
@@ -22,7 +20,6 @@ class Addexpense extends StatefulWidget {
 class _AddexpenseState extends State<Addexpense> {
   final _descriptionController = TextEditingController();
   final _amountController = TextEditingController();
-  // final _whopaidController = TextEditingController();
   final _selectController = TextEditingController();
   String selectedCategory = 'income';
   var items = ['income', 'expense'];
@@ -59,7 +56,6 @@ class _AddexpenseState extends State<Addexpense> {
                 ),
               ),
             ),
-          
             const SizedBox(height: 100),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -79,40 +75,23 @@ class _AddexpenseState extends State<Addexpense> {
                     ),
                   ),
                   SizedBox(height: 20),
-                 TextFormField(
-  controller: _amountController,
-  decoration: InputDecoration(
-    prefixIcon: Icon(Icons.currency_rupee),
-    hintText: 'amount',
-    fillColor: Color.fromARGB(255, 231, 230, 230),
-    filled: true,
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ),
-  keyboardType: TextInputType.number, 
-  inputFormatters: [
-    FilteringTextInputFormatter.digitsOnly, 
-  ],
-),
-
-                  SizedBox(height: 20),
-                  // TextFormField(
-                  //   controller: _whopaidController,
-                  //   decoration: InputDecoration(
-                  //     prefixIcon: Icon(Icons.currency_rupee),
-                  //     hintText: 'Who paid',
-                  //     fillColor: Color.fromARGB(255, 231, 230, 230),
-                  //     filled: true,
-                  //     border: OutlineInputBorder(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //     ),
-                  //   ),
-                  // ),
-                  const Icon(
-                    Icons.expand_more,
-                    color: Colors.white,
+                  TextFormField(
+                    controller: _amountController,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.currency_rupee),
+                      hintText: 'amount',
+                      fillColor: Color.fromARGB(255, 231, 230, 230),
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
                   ),
+                  SizedBox(height: 20),
                   DropdownButton<String>(
                     value: selectedCategory,
                     items: items.map((String item) {
@@ -164,10 +143,6 @@ class _AddexpenseState extends State<Addexpense> {
                       onAddExpenseButtonClicked(context);
                       _showPopup(context);
                     },
-                    // child: ElevatedButton(onPressed: (){
-                    //   print('Button pressed with ID: $unique')
-                    // }, 
-                    // child: Text('save')),
                     child: Container(
                       height: 60,
                       decoration: BoxDecoration(
@@ -186,7 +161,7 @@ class _AddexpenseState extends State<Addexpense> {
                     ),
                   ),
                 ],
-              ),  
+              ),
             ),
           ],
         ),
@@ -198,34 +173,21 @@ class _AddexpenseState extends State<Addexpense> {
     final _description = _descriptionController.text.trim();
     final _amount = _amountController.text.trim();
     final _select = _selectController.text.trim();
-    final groupid = widget.uniqueid;
-    // final _whopaid = _whopaidController.text.trim();
-   
-    if (_description.isEmpty || _amount.isEmpty || _select.isEmpty  ) {
+  
+
+    if (_description.isEmpty || _amount.isEmpty || _select.isEmpty) {
       return;
     } else {
       Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-        ListScreen(uniqueId: widget.uniqueid),
-        //  Firstgroup(
-        //   expense: ExpenseList(
-        //     description: _description,
-        //     amount: _amount,
-          
-        //     select: _select,
-           
-           
-        //   ),
-        // ),
+        builder: (context) => ListScreen(),
       ));
     }
-    print('$_description $_amount');
+
     final _expense = ExpenseList(
-      groupId: groupid,
+     
       description: _description,
       amount: _amount,
       select: _select,
-     
     );
 
     addExpense(_expense);

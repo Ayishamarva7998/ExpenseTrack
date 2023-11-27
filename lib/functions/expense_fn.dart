@@ -5,7 +5,9 @@ import 'package:splitwise_app/model/expenselist_model.dart';
 ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
  Future<void> addExpense(ExpenseList value)async{
    final expenseDB = await Hive.openBox<ExpenseList>('expense_db');
+   
    await expenseDB.add(value);
+   
    expenseListNotifier.value.add(value);
    expenseListNotifier.notifyListeners();
  }
@@ -13,6 +15,7 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
     final expenseDB = await Hive.openBox<ExpenseList>('expense_db');
     expenseListNotifier.value.clear();
     expenseListNotifier.value.addAll(expenseDB.values);
+   
     expenseListNotifier.notifyListeners();
 
     
@@ -23,6 +26,7 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
   expenseDB.deleteAt(index);
   getAllexpense();
  }
+ 
 
      double total( expense){
     double totalamount = 0;

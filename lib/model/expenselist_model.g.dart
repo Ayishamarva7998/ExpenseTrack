@@ -20,22 +20,19 @@ class ExpenseListAdapter extends TypeAdapter<ExpenseList> {
       description: fields[0] as String,
       amount: fields[1] as String,
       select: fields[2] as String,
-      groupId: fields[3] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, ExpenseList obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.description)
       ..writeByte(1)
       ..write(obj.amount)
       ..writeByte(2)
-      ..write(obj.select)
-      ..writeByte(3)
-      ..write(obj.groupId);
+      ..write(obj.select);
   }
 
   @override
