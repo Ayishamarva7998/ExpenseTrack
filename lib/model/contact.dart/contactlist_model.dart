@@ -19,5 +19,3 @@ class ContactList{
   ContactList({required this.name,required this.number,required this.isDone});
  
 }
- 
- 

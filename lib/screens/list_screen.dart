@@ -5,13 +5,16 @@ import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/screens/adddexpense_screen.dart';
 
 class ListScreen extends StatefulWidget {
-  ListScreen({Key? key}) : super(key: key);
+  final String uniqueId;
+  ListScreen({Key? key,required this.uniqueId}) : super(key: key);
 
   @override
   _ListScreenState createState() => _ListScreenState();
 }
 
 class _ListScreenState extends State<ListScreen> {
+  double totalamount = total(expenseListNotifier.value);
+
   DateTime selectedDate = DateTime.now();
 
   Future<void> _selectDate(BuildContext context) async {
@@ -27,6 +30,11 @@ class _ListScreenState extends State<ListScreen> {
         selectedDate = picked;
       });
     }
+  }
+
+  String generateUniqueId() {
+     
+    return DateTime.now().millisecondsSinceEpoch.toString();
   }
 
   @override
@@ -60,60 +68,74 @@ class _ListScreenState extends State<ListScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
+            SizedBox(height: 50,),
+            Padding(
+              padding: const EdgeInsets.only(left: 200),
+              child: Text("Total Amount:- ${totalamount}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.blue),
+              ),
+            ),
             
             const SizedBox(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.only(right: 290),
-              child: Text('${DateFormat('yyyy-MM-dd').format(selectedDate)}'),
+              child: Text('${DateFormat('yyyy-MM-dd').format(selectedDate)}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
             ),
+            SizedBox(height: 10,),
             Expanded(
               child: Builder(builder: (context) {
-                  return ValueListenableBuilder(
-                    valueListenable: expenseListNotifier,
-                    builder: (BuildContext ctx, List<ExpenseList>expenseList,
-                        Widget? child) {
-                      return ListView.builder(
-                        itemBuilder: (ctx, index) {
-                          final data = expenseList[index];
-                          return ListTile(
-                            title: Text(data.description),
-                            subtitle: Text(data.amount),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    deleteExpense(index);
-                                  },
-                                  icon: const Icon(Icons.delete,
-                                      color: Color.fromARGB(255, 219, 218, 218)),
+                return ValueListenableBuilder(
+                  valueListenable: expenseListNotifier,
+                  builder:
+                      (BuildContext ctx, List<ExpenseList> expenseList, Widget? child) {
+                    return ListView.builder(
+                      itemBuilder: (ctx, index) {
+                        final data = expenseList[index];
+                         
+                        
+             if (widget.uniqueId!=data.groupId) {
+               return Center(child: Text('Nodata'));
+             } else{
+                return ListTile(
+                          
+                          title: Text(data.description),
+                          subtitle: Text(data.amount),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  deleteExpense(index);
+                                },
+                                icon: const Icon(Icons.delete,
+                                    color: Color.fromARGB(255, 219, 218, 218)),
+                              ),
+                              Text(
+                                data.select,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: data.select == 'income'
+                                      ? Colors.green
+                                      : Colors.red,
                                 ),
-                                Text(
-                                  data.select,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: data.select == 'income'
-                                        ? Colors.green
-                                        : Colors.red,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        itemCount: expenseList.length,
-                      );
-                    },
-                  );
-                }),
+                              ),
+                            ],
+                          ),
+                        );
+             } 
+                      },
+                      itemCount: expenseList.length,
+                    );
+                  },
+                );
+              }),
             ),
              GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Addexpense(groupId: '',)));
+                      MaterialPageRoute(builder: (context) => Addexpense(uniqueid: widget.uniqueId,)));
                 },
                 child: Container(
                   height: 55,

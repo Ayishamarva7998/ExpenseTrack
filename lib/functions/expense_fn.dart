@@ -31,10 +31,9 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
     }
     return totalamount;
   }
-  // String getExpenseID(int index){
-  //   return expenseListNotifier.value[index].id;
-    
-  // }
+  
+
+ 
 
    
 

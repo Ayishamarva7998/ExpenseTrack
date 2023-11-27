@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/functions/grouplist_fn.dart';
-import 'package:splitwise_app/model/contactlist_model.dart';
+
 import 'package:splitwise_app/model/grouplist_model.dart';
 import 'package:splitwise_app/screens/addcontact_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
+
+import '../model/contact.dart/contactlist_model.dart';
 
 class Addgroup extends StatefulWidget {
   const Addgroup({super.key});
@@ -90,7 +92,7 @@ class _AddgroupState extends State<Addgroup> {
                                   data.isDone = newvalue!;
                                   if (newvalue!) {
                                     selectedContacts.add(data);
-                                  } else {
+                                  } else { 
                                     selectedContacts.remove(data);
                                   }
                                 });

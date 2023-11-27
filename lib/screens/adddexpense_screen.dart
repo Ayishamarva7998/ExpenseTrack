@@ -3,14 +3,16 @@ import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/screens/list_screen.dart';
-import 'package:splitwise_app/screens/techhouse.dart';
+// import 'package:splitwise_app/screens/techhouse.dart';
 import 'package:flutter/services.dart'; 
 
 
 
 class Addexpense extends StatefulWidget {
+  final String uniqueid;
   Addexpense({
-    Key? key, required String groupId,
+    required this.uniqueid,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -184,7 +186,7 @@ class _AddexpenseState extends State<Addexpense> {
                     ),
                   ),
                 ],
-              ),
+              ),  
             ),
           ],
         ),
@@ -196,6 +198,7 @@ class _AddexpenseState extends State<Addexpense> {
     final _description = _descriptionController.text.trim();
     final _amount = _amountController.text.trim();
     final _select = _selectController.text.trim();
+    final groupid = widget.uniqueid;
     // final _whopaid = _whopaidController.text.trim();
    
     if (_description.isEmpty || _amount.isEmpty || _select.isEmpty  ) {
@@ -203,7 +206,7 @@ class _AddexpenseState extends State<Addexpense> {
     } else {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) =>
-        ListScreen(),
+        ListScreen(uniqueId: widget.uniqueid),
         //  Firstgroup(
         //   expense: ExpenseList(
         //     description: _description,
@@ -218,7 +221,7 @@ class _AddexpenseState extends State<Addexpense> {
     }
     print('$_description $_amount');
     final _expense = ExpenseList(
-    
+      groupId: groupid,
       description: _description,
       amount: _amount,
       select: _select,

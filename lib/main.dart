@@ -4,9 +4,11 @@ import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/functions/grouplist_fn.dart';
-import 'package:splitwise_app/model/contactlist_model.dart';
+
 import 'package:splitwise_app/model/expenselist_model.dart';
 import 'package:splitwise_app/model/grouplist_model.dart';
+
+import 'model/contact.dart/contactlist_model.dart';
 
 
 void main()async {

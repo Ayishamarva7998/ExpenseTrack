@@ -26,6 +26,7 @@ class Groupscreen extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Firstgroup(
                         expense: ExpenseList(
+                          groupId: '',
                             description: '', amount: '', select: '')),
                   ));
                 },
@@ -71,7 +72,7 @@ class Groupscreen extends StatelessWidget {
                               onTap: () {
                                 print('Unique ID:$uniqueId');
                                 Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ListScreen(),
+                                  builder: (context) => ListScreen(uniqueId: uniqueId),
                                 ));
                                 
                               },

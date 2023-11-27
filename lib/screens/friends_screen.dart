@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
-import 'package:splitwise_app/model/contactlist_model.dart';
+import 'package:splitwise_app/model/contact.dart/contactlist_model.dart';
+
 import 'package:splitwise_app/screens/addcontact_screen.dart';
 import 'package:splitwise_app/screens/edit_screen.dart';
 
