@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:splitwise_app/bottombar.dart';
+import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/model/contact.dart/contactlist_model.dart';
-
 import 'package:splitwise_app/screens/friends_screen.dart';
 
 class EditContacts extends StatefulWidget {

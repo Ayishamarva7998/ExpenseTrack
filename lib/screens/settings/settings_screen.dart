@@ -16,7 +16,7 @@ class Settings extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(11),
         child: Column(
-          
+           
           children: [
             SizedBox(height: 160,),
           

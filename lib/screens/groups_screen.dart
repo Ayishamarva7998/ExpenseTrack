@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:splitwise_app/functions/grouplist_fn.dart';
-import 'package:splitwise_app/model/expenselist_model.dart';
-import 'package:splitwise_app/model/grouplist_model.dart';
-import 'package:splitwise_app/screens/adddexpense_screen.dart';
-import 'package:splitwise_app/screens/addgroup_screen.dart';
-import 'package:splitwise_app/screens/list_screen.dart';
-import 'package:splitwise_app/screens/techhouse.dart';
+import 'package:splitwise_app/model/expense/expenselist_model.dart';
+import 'package:splitwise_app/model/group/grouplist_model.dart';
+import 'package:splitwise_app/widgets/adddexpense_screen.dart';
+import 'package:splitwise_app/widgets/addgroup_screen.dart';
+import 'package:splitwise_app/widgets/expense_screen.dart';
 
 class Groupscreen extends StatelessWidget {
   Groupscreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('assets/billss.jpg'),
+              ClipRRect(
+                  child: Lottie.asset('assets/Lottie Lego.json',
+                      height: screenHeight * 0.2, width: screenWidth * 0.4)),
               const SizedBox(
                 height: 10,
               ),
@@ -26,14 +31,12 @@ class Groupscreen extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Firstgroup(
                         expense: ExpenseList(
-                       
                             description: '', amount: '', select: '')),
                   ));
                 },
-                
                 child: Container(
-                  height: 50,
-                  width: 320,
+                  height: screenHeight * 0.05,
+                  width: screenWidth * 0.2,
                   color: Colors.white,
                   child: const Align(
                     alignment: Alignment.center,
@@ -43,13 +46,9 @@ class Groupscreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
              
-              SizedBox(height: 30),
               Container(
-                height: 200,
+                height: screenHeight * 0.2,
                 child: Builder(
                   builder: (context) {
                     return ValueListenableBuilder(
@@ -59,18 +58,8 @@ class Groupscreen extends StatelessWidget {
                         return ListView.builder(
                           itemBuilder: (ctx, index) {
                             final data = groupList[index];
-                            //  Key tileKey = ObjectKey(data);
-                            // String uniqueId  =tileKey.toString();
+
                             return ListTile(
-                              // key: tileKey,
-                              // onTap: () {
-                              //   print('Unique ID:$uniqueId');
-                              //   Navigator.of(context).push(MaterialPageRoute(
-                              //     builder: (context) => ListScreen(uniqueId: uniqueId),
-                              //   ));
-                                
-                              // },
-                              
                               title: Text(data.contacts),
                               subtitle: Text(data.groupname),
                             );
@@ -82,15 +71,15 @@ class Groupscreen extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: 50),
+              SizedBox(height: screenHeight * 0.19),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => Addgroup()));
                 },
                 child: Container(
-                  height: 55,
-                  width: 360,
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.9,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Color.fromARGB(255, 92, 172, 162),
@@ -100,15 +89,15 @@ class Groupscreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: screenHeight * 0.02),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => Addexpense()));
                 },
                 child: Container(
-                  height: 55,
-                  width: 360,
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.9,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Color.fromARGB(255, 22, 140, 124),

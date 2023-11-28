@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:splitwise_app/bottombar.dart';
-import 'package:splitwise_app/screens/settings/settings_screen.dart';
+
+
 
 class About extends StatelessWidget {
   const About({super.key});

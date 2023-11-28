@@ -6,7 +6,7 @@ import 'package:splitwise_app/screens/friends_screen.dart';
 import 'package:splitwise_app/screens/groups_screen.dart';
 import 'package:splitwise_app/screens/settings/settings_screen.dart';
 
-import 'model/contact.dart/contactlist_model.dart';
+import '../model/contact.dart/contactlist_model.dart';
 
 
 class bottombar extends StatefulWidget {

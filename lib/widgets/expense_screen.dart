@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:splitwise_app/bottombar.dart';
+import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
-import 'package:splitwise_app/model/expenselist_model.dart';
-import 'package:splitwise_app/model/grouplist_model.dart';
-import 'package:splitwise_app/screens/participants_screen.dart';
+import 'package:splitwise_app/model/expense/expenselist_model.dart';
+import 'package:splitwise_app/model/group/grouplist_model.dart';
+import 'package:splitwise_app/widgets/participants_screen.dart';
 
 class Firstgroup extends StatefulWidget {
   ExpenseList expense;
@@ -52,6 +52,8 @@ class _FirstgroupState extends State<Firstgroup> {
   
 @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+     final width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -60,7 +62,7 @@ class _FirstgroupState extends State<Firstgroup> {
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
           ),
-          leading: IconButton(
+          leading: IconButton(  
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => bottombar(),

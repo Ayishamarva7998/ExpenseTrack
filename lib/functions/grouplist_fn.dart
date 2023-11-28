@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:splitwise_app/model/grouplist_model.dart';
+import 'package:splitwise_app/model/group/grouplist_model.dart';
 
 ValueNotifier<List<GroupList>> groupListNotifier =ValueNotifier([]);
  addGroup(GroupList value)async{

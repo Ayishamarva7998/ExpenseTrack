@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import 'package:splitwise_app/model/expenselist_model.dart';
+import 'package:splitwise_app/model/expense/expenselist_model.dart';
 
 import '../model/contact.dart/contactlist_model.dart';
 
