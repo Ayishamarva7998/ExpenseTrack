@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/model/expense/expenselist_model.dart';
+import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
 import 'package:splitwise_app/model/contact.dart/contactlist_model.dart';
-import 'package:splitwise_app/screens/friends_screen.dart';
+
 
 class EditContacts extends StatefulWidget {
-  final String name;
-  final String number;
+  final String description;
+  final String amount;
   int index;
 
   EditContacts({
     super.key,
-    required this.name,
-    required this.number,
+    required this.description,
+    required this.amount,
     required this.index,
   });
 
@@ -21,14 +23,14 @@ class EditContacts extends StatefulWidget {
 }
 
 class _UpdateStudentState extends State<EditContacts> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController numberController = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController amount = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    nameController = TextEditingController(text: widget.name);
-    numberController = TextEditingController(text: widget.number);
+    description = TextEditingController(text: widget.description);
+    amount = TextEditingController(text: widget.amount);
   }
 
   @override
@@ -57,10 +59,10 @@ class _UpdateStudentState extends State<EditContacts> {
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
-                            controller: nameController,
+                            controller: description,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'edit your  contacts',
+                              hintText: 'edit your  expense',
                             ),
                           ),
                         ),
@@ -82,7 +84,7 @@ class _UpdateStudentState extends State<EditContacts> {
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
-                            controller: numberController,
+                            controller: amount,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: 'edit  description',
@@ -106,7 +108,7 @@ class _UpdateStudentState extends State<EditContacts> {
                           backgroundColor: Colors.white,
                         ),
                         child: const Text(
-                          "Edited contacts",
+                          "Edited expense",
                           style: TextStyle(color: Colors.black),
                         ),
                       )
@@ -149,9 +151,7 @@ class _UpdateStudentState extends State<EditContacts> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (ctx) => Friendsscreen(
-                                  contact: ContactList(
-                                      name: '', number: '', isDone: false))),
+                              builder: (ctx) => Descriptionscreen(expense: ExpenseList(description: '', amount: '', select: ''),)),
                         );
                       },
                       child: Container(
@@ -219,21 +219,21 @@ class _UpdateStudentState extends State<EditContacts> {
   }
 
   Future<void> update() async {
-    final editedName = nameController.text.trim();
-    final editedNumber = numberController.text.trim();
+    final editedDescriptioname = description.text.trim();
+    final editedAmount = amount.text.trim();
 
-    if (editedName.isEmpty || editedNumber.isEmpty) {
+    if (editedDescriptioname.isEmpty || editedAmount.isEmpty) {
       return;
     } else {
       final updated =
-          ContactList(name: editedName, number: editedNumber, isDone: false);
+          ExpenseList(description: editedDescriptioname, amount:editedAmount,select: '' );
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         margin: EdgeInsets.all(10),
         backgroundColor: Colors.grey,
         behavior: SnackBarBehavior.floating,
         content: Text("updated successfully"),
       ));
-      editContacts(widget.index, updated);
+      editExpense(widget.index, updated);
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => bottombar()));
     }

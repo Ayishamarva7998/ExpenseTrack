@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
-import 'package:splitwise_app/widgets/expense_screen.dart';
+
 
 class Addexpense extends StatefulWidget {
   Addexpense({
-    Key? key,
+    Key? key,c
   }) : super(key: key);
 
   @override
@@ -19,6 +20,7 @@ class _AddexpenseState extends State<Addexpense> {
   final _descriptionController = TextEditingController();
   final _amountController = TextEditingController();
   final _selectController = TextEditingController();
+
   String selectedCategory = 'income';
   var items = ['income', 'expense'];
 
@@ -198,12 +200,13 @@ class _AddexpenseState extends State<Addexpense> {
         description: _description,
         amount: _amount,
         select: _select,
+      
       );
 
       addExpense(_expense);
 
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => Firstgroup(expense: ExpenseList(description: '', amount: '', select: '')),
+       Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => Descriptionscreen(expense: ExpenseList(description: '', amount: '', select: '')),
       ));
     }
   }

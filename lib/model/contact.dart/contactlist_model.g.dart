@@ -17,8 +17,8 @@ class ContactListAdapter extends TypeAdapter<ContactList> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ContactList(
-      name: fields[0] as String,
-      number: fields[1] as String,
+      description: fields[0] as String,
+      amount: fields[1] as String,
       isDone: fields[2] as bool,
     );
   }
@@ -28,9 +28,9 @@ class ContactListAdapter extends TypeAdapter<ContactList> {
     writer
       ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.description)
       ..writeByte(1)
-      ..write(obj.number)
+      ..write(obj.amount)
       ..writeByte(2)
       ..write(obj.isDone);
   }

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:splitwise_app/functions/expense_fn.dart';
 
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
 
@@ -31,13 +32,13 @@ import '../model/contact.dart/contactlist_model.dart';
   contactDB.deleteAt(index);
   getAllcontacts();
  }
-void editContacts(index,ContactList value ) async {
-  final contactDB = await Hive.openBox<ContactList>('contact_db');
-  contactListNotifier.value.clear();
-  contactListNotifier.value.addAll(contactDB.values);
-   contactListNotifier.notifyListeners();
-  contactDB.putAt(index, value);
-  getAllcontacts();
+void editExpense(index,ExpenseList value ) async {
+  final expenseDB = await Hive.openBox<ExpenseList>('expense_db');
+  expenseListNotifier.value.clear();
+  expenseListNotifier.value.addAll(expenseDB.values);
+  expenseListNotifier.notifyListeners();
+  expenseDB.putAt(index, value);
+  getAllexpense();
 } 
   
 

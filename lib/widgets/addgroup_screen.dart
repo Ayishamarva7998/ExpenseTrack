@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
-import 'package:splitwise_app/widgets/addcontact_screen.dart';
 import '../model/contact.dart/contactlist_model.dart';
 
 class Addgroup extends StatefulWidget {
@@ -57,14 +56,7 @@ class _AddgroupState extends State<Addgroup> {
                 const SizedBox(
                   width: 10,
                 ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Addcontact(),
-                    ));
-                  },
-                  icon: Icon(Icons.person_add),
-                ),
+                
               ],
             ),
             Expanded(
@@ -78,8 +70,8 @@ class _AddgroupState extends State<Addgroup> {
                         itemBuilder: (ctx, index) {
                           final data = contactList[index];
                           return ListTile(
-                            title: Text(data.name),
-                            subtitle: Text(data.number),
+                            title: Text(data.description),
+                            subtitle: Text(data.amount),
                             trailing: Checkbox(
                               value: data.isDone,
                               onChanged: (newvalue) {

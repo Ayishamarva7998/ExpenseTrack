@@ -6,16 +6,16 @@ part 'contactlist_model.g.dart';
 class ContactList{
 
   @HiveField(0)
-  final String name;
+  final String description;
 
   @HiveField(1)
-  final String number;
+  final String amount;
   
   @HiveField(2)
   late bool isDone;
   
 
    
-  ContactList({required this.name,required this.number,required this.isDone});
+  ContactList({required this.description,required this.amount,required this.isDone});
  
 }

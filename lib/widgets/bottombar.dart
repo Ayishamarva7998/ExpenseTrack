@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/model/expense/expenselist_model.dart';
 
 import 'package:splitwise_app/screens/chart_screen.dart';
-import 'package:splitwise_app/screens/friends_screen.dart';
-import 'package:splitwise_app/screens/groups_screen.dart';
+import 'package:splitwise_app/screens/description_screen.dart';
+import 'package:splitwise_app/screens/home_screen.dart';
 import 'package:splitwise_app/screens/settings/settings_screen.dart';
 
 import '../model/contact.dart/contactlist_model.dart';
@@ -20,9 +21,9 @@ class _bottombarState extends State<bottombar> {
  int myindex = 0;
 
 final pages = [
- Groupscreen(),
- Friendsscreen(contact: ContactList(name: '', number: '',isDone: false)),
- Chartscreen(),
+ Homescreen(),
+Descriptionscreen(expense: ExpenseList(description: '', amount: '', select: '')),
+ chart(),
  Settings()
   
 ];
@@ -45,9 +46,9 @@ final pages = [
           
           BottomNavigationBarItem(
             
-            icon: Icon(Icons.groups_sharp,color: myindex==0?Colors.black:Colors.grey,),label: 'Groups',),
+            icon: Icon(Icons.home,color: myindex==0?Colors.black:Colors.grey,),label: 'Home',),
              BottomNavigationBarItem(
-            icon: Icon(Icons.group_add,color: myindex==1?Colors.black:Colors.grey,),label: 'Friends'), 
+            icon: Icon(Icons.description,color: myindex==1?Colors.black:Colors.grey,),label: 'Description'), 
              BottomNavigationBarItem(
             icon: Icon(Icons.incomplete_circle,color: myindex==2?Colors.black:Colors.grey,),label: 'Chart'), 
              BottomNavigationBarItem(

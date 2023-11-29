@@ -26,7 +26,7 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
   expenseDB.deleteAt(index);
   getAllexpense();
  }
- 
+ // total amount
 
      double total( expense){
     double totalamount = 0;
@@ -36,7 +36,15 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
     return totalamount;
   }
   
+//chart calcultion
 
+double calculateTotalCost(List<ExpenseList> foods) {
+  double totalCost = 0;
+  for (var food in foods) {
+    totalCost += double.parse(food.amount);
+  }
+  return totalCost;
+}
  
 
    
