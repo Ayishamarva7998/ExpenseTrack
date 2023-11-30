@@ -38,10 +38,10 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
   
 //chart calcultion
 
-double calculateTotalCost(List<ExpenseList> foods) {
+double calculateTotalCost(List<ExpenseList> expense) {
   double totalCost = 0;
-  for (var food in foods) {
-    totalCost += double.parse(food.amount);
+  for (var expense in expense) {
+    totalCost += double.parse(expense.amount);
   }
   return totalCost;
 }

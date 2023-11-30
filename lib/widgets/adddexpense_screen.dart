@@ -66,10 +66,10 @@ class _AddexpenseState extends State<Addexpense> {
                 onTap: pickedImage,
                 child: CircleAvatar(
                   radius: 50,
-                  backgroundColor: Colors.amber,
+                  backgroundColor: Color.fromARGB(255, 22, 140, 124),
                   backgroundImage: _selectImage!=null 
                 ? FileImage(_selectImage!)
-                :AssetImage("assets/billss.jpg")as ImageProvider,
+                :AssetImage("assets/istockphoto-1308684522-612x612.jpg")as ImageProvider,
                 
                 ),
               ),
@@ -136,7 +136,7 @@ class _AddexpenseState extends State<Addexpense> {
                         height: 60,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 92, 172, 162),
+                          color: Color.fromARGB(255, 22, 140, 124),
                         ),
                         child: const Center(
                           child: Text(

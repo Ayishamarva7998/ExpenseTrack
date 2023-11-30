@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
@@ -202,15 +203,7 @@ class _FriendsscreenState extends State< Descriptionscreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 
-                                // Text(
-                                //   data.select,
-                                //   style: TextStyle(
-                                //       fontSize: 12,
-                                //       fontWeight: FontWeight.bold,
-                                //       color: data.select == 'income'
-                                //           ? Colors.green
-                                //           : Colors.red),
-                                // ),
+                             
                                 IconButton(onPressed: (){
                                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditContacts(description: data.description, amount: data.amount, index: index),));
                                 }, icon: Icon(Icons.edit)),
@@ -218,7 +211,7 @@ class _FriendsscreenState extends State< Descriptionscreen> {
                                 IconButton(
                                     onPressed: () {
                                       deleteExpense(index);
-                                    }, icon: Icon(Icons.delete)),
+                                    },icon: Image.asset("assets/delete.png",height: 25,),),
                               ],
                             ),
                           );

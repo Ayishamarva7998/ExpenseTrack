@@ -3,7 +3,7 @@ import 'package:splitwise_app/model/expense/expenselist_model.dart';
 import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/contactlist_fn.dart';
-import 'package:splitwise_app/model/contact.dart/contactlist_model.dart';
+
 
 
 class EditContacts extends StatefulWidget {
