@@ -1,9 +1,12 @@
+
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class Addexpense extends StatefulWidget {
@@ -19,6 +22,7 @@ class _AddexpenseState extends State<Addexpense> {
   final _formKey = GlobalKey<FormState>();
   final _descriptionController = TextEditingController();
   final _amountController = TextEditingController();
+  late List<File> _imagelist =[];
   final _selectController = TextEditingController();
 
   String selectedCategory = 'income';
@@ -58,6 +62,8 @@ class _AddexpenseState extends State<Addexpense> {
                   ),
                 ),
               ),
+              
+              
               const SizedBox(height: 100),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -211,23 +217,5 @@ class _AddexpenseState extends State<Addexpense> {
     }
   }
 
-//   Future<void> _showPopup(BuildContext context) async {
-//     await showDialog(
-//       context: context,
-//       builder: (BuildContext context) {
-//         return AlertDialog(
-//           title: const Text('Expense Saved'),
-//           content: const Text('Your expense has been successfully saved.'),
-//           actions: <Widget>[
-//             TextButton(
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//               },
-//               child: Text('OK'),
-//             ),
-//           ],
-//         );
-//       },
-//     );
-//   }
+
  }

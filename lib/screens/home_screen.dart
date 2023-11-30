@@ -16,15 +16,16 @@ class Homescreen extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
-            children: [SizedBox(height: 50),
+            children: [SizedBox(height: 70),
+            // Container(child: Image.asset('assets\icon.json'),),
               ClipRRect(
                 
-                  child: Lottie.asset('assets/home.json',
+                  child: Lottie.asset('assets/icon.json',
                   
-                      height: screenHeight * 0.2, width: screenWidth * 5)),
-              const SizedBox(
-                height: 10,
-              ),
+                      height: screenHeight * 0.3, width: screenWidth * 0.9)),
+              // const SizedBox(
+              //   height: 10,
+              // ),
              
              
               Container(
