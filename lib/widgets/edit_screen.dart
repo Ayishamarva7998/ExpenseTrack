@@ -151,7 +151,7 @@ class _UpdateStudentState extends State<EditContacts> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (ctx) => Descriptionscreen(expense: ExpenseList(description: '', amount: '', select: ''),)),
+                              builder: (ctx) => Descriptionscreen(expense: ExpenseList(description: '', amount: '' ,image: ''),)),
                         );
                       },
                       child: Container(
@@ -226,7 +226,7 @@ class _UpdateStudentState extends State<EditContacts> {
       return;
     } else {
       final updated =
-          ExpenseList(description: editedDescriptioname, amount:editedAmount,select: '' );
+          ExpenseList(description: editedDescriptioname, amount:editedAmount,image: '');
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         margin: EdgeInsets.all(10),
         backgroundColor: Colors.grey,

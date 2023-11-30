@@ -7,7 +7,6 @@ import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/screens/home_screen.dart';
 import 'package:splitwise_app/screens/settings/settings_screen.dart';
 
-import '../model/contact.dart/contactlist_model.dart';
 
 
 class bottombar extends StatefulWidget {
@@ -18,11 +17,11 @@ class bottombar extends StatefulWidget {
 }
 
 class _bottombarState extends State<bottombar> {
- int myindex = 0;
+ int myindex = 0; 
 
 final pages = [
  Homescreen(),
-Descriptionscreen(expense: ExpenseList(description: '', amount: '', select: '')),
+Descriptionscreen(expense: ExpenseList(description: '', amount: '',image: '')),
  chart(),
  Settings()
   

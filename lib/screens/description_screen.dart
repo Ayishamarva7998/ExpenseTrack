@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
@@ -24,7 +23,7 @@ class _FriendsscreenState extends State< Descriptionscreen> {
   double totalamount = total(expenseListNotifier.value);
   DateTime selectedDate = DateTime.now();
  
-    XFile? pickedImage;
+  
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -39,45 +38,7 @@ class _FriendsscreenState extends State< Descriptionscreen> {
       });
     }
   }
-   Future<void> _pickImage() async {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Pick Image From...'),
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  Navigator.pop(context);
-                  XFile? picked =
-                      await ImagePicker().pickImage(source: ImageSource.camera);
-                  setState(() {
-                    pickedImage = picked;
-                  });
-                },
-                child: const Text('Camera'),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  Navigator.pop(context);
-                  XFile? picked = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
-                  setState(() {
-                    pickedImage = picked;
-                  });
-                },
-                child: const Text('Gallery'),
-              ),
-            ],
-          ),
-        ); 
-      },
-    );
-  }
-
-  
+ 
 
   
 
@@ -171,46 +132,7 @@ class _FriendsscreenState extends State< Descriptionscreen> {
         ),
         body: Column(
           children: [
-            Container(
-                  height: 200,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    border: Border.all(
-                      width: 8,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      pickedImage != null
-                          ? Image.file(
-                              File(pickedImage!.path),
-                              fit: BoxFit.cover,
-                            )
-                          : Container(),
-                      pickedImage == null
-                          ? Positioned.fill(
-                              child: GestureDetector(
-                                onTap: () {
-                                  _pickImage();
-                                },
-                                child: Container(
-                                  color: Colors.transparent,
-                                  child: Center(
-                                    child: Image.asset(
-                                      'assets/addimage.json',
-                                      width: 68,
-                                      height: 68,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )
-                          : const SizedBox(),
-                    ],
-                  ),
-                ),
+           
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
               child: TextFormField(
@@ -246,20 +168,7 @@ class _FriendsscreenState extends State< Descriptionscreen> {
             const SizedBox(
               height: 30,
             ),
-            // Stack(
-            //   children: [
-            //     pickedImage! = null
-            //     ? image.file(File(pickedImage!.path),
-            //     fit:BoxFit.cover)
-            //     :Container(),
-            //     pickedImage == null
-            //     ?Positioned.fill(child: GestureDetector(
-            //       onTap: () {
-            //         pickedImage();
-            //       },
-            //     ))
-            //   ],
-            // ),
+           
             Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -283,20 +192,25 @@ class _FriendsscreenState extends State< Descriptionscreen> {
                         itemBuilder: (ctx, index) {
                           final data = list[index];
                           return ListTile(
+                            leading: CircleAvatar(radius: 50,backgroundImage: 
+                            data.image !=null
+                            ? FileImage(File(data.image!))
+                            :AssetImage('assets/billss.jpg')as ImageProvider,),
                             title: Text(data.description),
                             subtitle: Text(data.amount),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(
-                                  data.select,
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: data.select == 'income'
-                                          ? Colors.green
-                                          : Colors.red),
-                                ),
+                                
+                                // Text(
+                                //   data.select,
+                                //   style: TextStyle(
+                                //       fontSize: 12,
+                                //       fontWeight: FontWeight.bold,
+                                //       color: data.select == 'income'
+                                //           ? Colors.green
+                                //           : Colors.red),
+                                // ),
                                 IconButton(onPressed: (){
                                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditContacts(description: data.description, amount: data.amount, index: index),));
                                 }, icon: Icon(Icons.edit)),

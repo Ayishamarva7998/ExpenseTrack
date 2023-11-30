@@ -14,15 +14,16 @@ class ExpenseList{
   final String amount;
  
   @HiveField(2)
-  final String select;
+  final String ?image;
 
+ 
   
  
   
 
  
    
-  ExpenseList({required this.description,required this.amount,required this.select});
+  ExpenseList({required this.description,required this.amount,required this.image});
  
 }
  

@@ -19,7 +19,7 @@ class ExpenseListAdapter extends TypeAdapter<ExpenseList> {
     return ExpenseList(
       description: fields[0] as String,
       amount: fields[1] as String,
-      select: fields[2] as String,
+      image: fields[2] as String?,
     );
   }
 
@@ -32,7 +32,7 @@ class ExpenseListAdapter extends TypeAdapter<ExpenseList> {
       ..writeByte(1)
       ..write(obj.amount)
       ..writeByte(2)
-      ..write(obj.select);
+      ..write(obj.image);
   }
 
   @override
