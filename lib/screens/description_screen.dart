@@ -196,7 +196,7 @@ class _FriendsscreenState extends State< Descriptionscreen> {
                             leading: CircleAvatar(radius: 50,backgroundImage: 
                             data.image !=null
                             ? FileImage(File(data.image!))
-                            :AssetImage('assets/billss.jpg')as ImageProvider,),
+                            :AssetImage('assets/circleavatar.png')as ImageProvider,),
                             title: Text(data.description),
                             subtitle: Text(data.amount),
                             trailing: Row(

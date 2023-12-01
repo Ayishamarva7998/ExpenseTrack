@@ -21,15 +21,17 @@ class _MyWidgetState extends State<Splashscreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Text(
-          "Employees App",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
+    return const SafeArea(
+      child: Scaffold(
+        backgroundColor: Color.fromARGB(255, 22, 140, 124),
+        body: Center(
+          child: Text(
+            "Easy Tracker makes life easier",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -39,7 +41,7 @@ class _MyWidgetState extends State<Splashscreen> {
   Future<void> gotoLoginpage() async {
     await Future.delayed(const Duration(seconds: 2));
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => bottombar()),
+      MaterialPageRoute(builder: (context) => loginpage()),
     );
   }
 

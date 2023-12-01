@@ -22,7 +22,7 @@ class _bottombarState extends State<bottombar> {
 final pages = [
  Homescreen(),
 Descriptionscreen(expense: ExpenseList(description: '', amount: '',image: '')),
- chart(),
+chart_screen(),
  Settings()
   
 ];

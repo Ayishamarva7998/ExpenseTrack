@@ -69,7 +69,7 @@ class _AddexpenseState extends State<Addexpense> {
                   backgroundColor: Color.fromARGB(255, 22, 140, 124),
                   backgroundImage: _selectImage!=null 
                 ? FileImage(_selectImage!)
-                :AssetImage("assets/istockphoto-1308684522-612x612.jpg")as ImageProvider,
+                :AssetImage("assets/circleavatar.png")as ImageProvider,
                 
                 ),
               ),
@@ -130,7 +130,7 @@ class _AddexpenseState extends State<Addexpense> {
                     GestureDetector(
                       onTap: () {
                         onAddExpenseButtonClicked(context);
-                        // _showPopup(context);
+                     
                       },
                       child: Container(
                         height: 60,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:splitwise_app/main.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+ import 'package:lottie/lottie.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});
@@ -21,75 +22,93 @@ class _loginpageState extends State<loginpage> {
       
       body:SafeArea(child: Form(
         key: _formKey,
-        child: Column(
-          children: [
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text('Easy pay ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),)),
+        child: SingleChildScrollView(
+          child: Column(
             
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text('Makes life easier,',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),)),
-              SizedBox(height: 40,),
-              CircleAvatar(radius: 80,backgroundImage: AssetImage('assets/circleavatar.png'),),
-              SizedBox(height: 200,),
-             Padding(
-               padding: const EdgeInsets.all(20),
-               child: TextFormField(
-                 validator: (value) {
-                            if(value == null || value.isEmpty){
-                              return "field is empty";
-                            }
-                            return null;
-                          },
-                controller: _usernameController,
-                decoration: InputDecoration(
-                fillColor: Color.fromARGB(255, 235, 235, 235),
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(1)
-                ),
-                hintText: 'username'
-               ),),
-             ),
-             Padding(
-               padding: const EdgeInsets.all(20),
-               child: TextFormField(
-                 validator: (value) {
-                            if(value == null || value.isEmpty){
-                              return "field is empty";
-                            }
-                            return null;
-                          },
-                controller: _passwordController,
-                decoration: InputDecoration(
-                fillColor: Color.fromARGB(255, 235, 235, 235),
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(1)
-                ),
-                hintText: 'password'
-               ),),
-             ),
-             GestureDetector(
-            onTap: () {
-              if(_formKey.currentState?.validate()??false){
-                checkLogin(context);
-              }
-            },
-               child: Container(
-                height: 50,
-                width: 350,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 7, 179, 156),),
-                child: const Align(alignment: Alignment.center,
-                  child: Text('login',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),)),
-                   
+            children: [
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Easy Tracker ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),),
+                )),
+              
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Makes life easier,',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),),
+                )),
+                SizedBox(height: 10,),
+               ClipRRect(
+                  
+                    child: Lottie.asset('assets/login.json',
+                    height: 250,
+                    width: 170
+                    
+                       )),
+                       
+                
+
+                SizedBox(height: 140,),
+               Padding(
+                 padding: const EdgeInsets.all(20),
+                 child: TextFormField(
+                   validator: (value) {
+                              if(value == null || value.isEmpty){
+                                return "field is empty";
+                              }
+                              return null;
+                            },
+                  controller: _usernameController,
+                  decoration: InputDecoration(
+                  fillColor: Color.fromARGB(255, 235, 235, 235),
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(1)
+                  ),
+                  hintText: 'username'
+                 ),),
                ),
-             ),
-             
-             
-          ],
-          
+               Padding(
+                 padding: const EdgeInsets.all(20),
+                 child: TextFormField(
+                   validator: (value) {
+                              if(value == null || value.isEmpty){
+                                return "field is empty";
+                              }
+                              return null;
+                            },
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                  fillColor: Color.fromARGB(255, 235, 235, 235),
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(1)
+                  ),
+                  hintText: 'password'
+                 ),),
+               ),
+               GestureDetector(
+              onTap: () {
+                if(_formKey.currentState?.validate()??false){
+                  checkLogin(context);
+                }
+              },
+                 child: Container(
+                  height: 50,
+                  width: 350,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 7, 179, 156),),
+                  child: const Align(alignment: Alignment.center,
+                    child: Text('login',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),)),
+                     
+                 ),
+               ),
+               
+               
+            ],
+            
+          ),
         ),
       ),
       ),

@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     getAllcontacts();
     getAllexpense(); 
-    // getAllgroup();
+   
     
     return const MaterialApp(
       title: 'EasyPay',
