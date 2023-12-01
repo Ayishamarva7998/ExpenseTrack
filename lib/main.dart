@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:splitwise_app/model/loginpage.dart';
+import 'package:splitwise_app/loginpage.dart';
 import 'package:splitwise_app/splash_screen.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 import 'package:splitwise_app/functions/expense_fn.dart';

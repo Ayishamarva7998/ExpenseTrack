@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:splitwise_app/model/loginpage.dart';
+import 'package:splitwise_app/loginpage.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 
 const String SAVE_KEY_NAME = 'user_logged_in';
