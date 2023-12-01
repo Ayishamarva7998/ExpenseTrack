@@ -22,7 +22,7 @@ class _chartState extends State<chart_screen> {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 22, 140, 124),
           title: const Text(
-            'chart',
+            'Chart',
             style: TextStyle(color: Colors.white),
           ),
         ),

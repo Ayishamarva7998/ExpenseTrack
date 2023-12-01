@@ -40,7 +40,7 @@ class _UpdateStudentState extends State<EditContacts> {
           backgroundColor: Color.fromARGB(255, 15, 132, 116),
           appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 22, 140, 124),
-            title: Text('EDIT detailes'),
+            title: Text('Done'),
           ),
           body: SingleChildScrollView(
             child: Column(
@@ -108,7 +108,7 @@ class _UpdateStudentState extends State<EditContacts> {
                           backgroundColor: Colors.white,
                         ),
                         child: const Text(
-                          "Edited expense",
+                          "Done",
                           style: TextStyle(color: Colors.black),
                         ),
                       )
@@ -199,7 +199,7 @@ class _UpdateStudentState extends State<EditContacts> {
                             SizedBox(width: 10),
                             Text(
                               'create your own Task',
-                              style: TextStyle(
+                              style: TextStyle( 
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),

@@ -33,24 +33,21 @@ class About extends StatelessWidget {
                   height: 30,
                 ),
                 const Text(''' 
-              Welcome to the Easy Pay! 
+              Welcome to the Easy Tracker! 
 
-              Easy Pay makes life easier!
+              Easy Tracker makes life easier!
 
-  A Easy Pay app  designed to help users to divide  bills on their daily basis.
-.Track balances.Keep track of shared expenses,balances,and who owes who.
-.Organise expenses,split expenses with any group trips,housemates,friends,and family.
-.Add expenses easily. Quickly add expenses on the go before you forget who paid.
-.Pay friends back.
+  A Easy Tracker app  designed to help individuals to monitor and manage their financial transactions.
+  These transactions can include everything from daily purchases and bills to larger expenses like rent and investments.
+  The primary goal of an expense tracker is to provide users with a comprehensive overview of their spending 
+  patterns,enabling them to make informed decisions about their finances.
+.
 
-              How Easy Pay App works:-
-
-Add each participant with whom you want to share the bills and app will show them ask them to pay the amount.
-
+             
 
               Is Easy Pay a safe app:-
 
-Splitwise does not handle any cash transactions,nor does it link to personal banking details,making it safer than other Apps. 
+Easy Tracker does not handle any cash transactions,nor does it link to personal banking details,making it safer than other Apps. 
 
 
 

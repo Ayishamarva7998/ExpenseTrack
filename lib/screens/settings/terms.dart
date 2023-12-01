@@ -33,15 +33,15 @@ class Terms extends StatelessWidget {
                   height: 30,
                 ),
                 const Text(''' 
-              Welcome to the Easy Pay! By using this app, you agree to these simple terms:
+              Welcome to the Easy Tracker! By using this app, you agree to these simple terms:
 
-  1:- Use Responsibly: The Easy Pay App is designed to help you to split the bills. Use it responsibly and enjoy your cooking experience!
+  1:- Use Responsibly: The Easy Tracker App is designed to help you to note the bills. Use it responsibly and enjoy your cooking experience!
 
-  2:- Your Content: Add bills and friends are your responsibility. Make sure they are accurate and safe to use.
+  2:- Your Content: Add expense and amount are your responsibility. Make sure they are accurate and safe to use.
 
   3:- Respect Privacy: We care about your privacy. Your use of the app is subject to our Privacy Policy.
 
-  4:- App Ownership: The Easy Pay App and its content belong to us. Please don't modify, distribute, or reverse engineer the app without our permission.
+  4:- App Ownership: The Easy Tracker App and its content belong to us. Please don't modify, distribute, or reverse engineer the app without our permission.
 
   5:- App Changes: We might update the app or these terms. Stay tuned for any announcements from us.
 
@@ -49,7 +49,7 @@ class Terms extends StatelessWidget {
 
   7:- Get in Touch: If you have questions, reach out to us at ayshaaysha7998@gmail.com.
 
-              By using the Recipe App, you agree to these terms. Enjoy your cooking adventures! ''')
+              By using the Easy Tracker App, you agree to these terms. Enjoy your  adventures! ''')
               ],
             ),
           ), 

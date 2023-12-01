@@ -173,7 +173,8 @@ class _AddexpenseState extends State<Addexpense> {
        
       
       );
-
+        _descriptionController.clear();
+        _amountController.clear();
       addExpense(_expense);
 
        Navigator.of(context).push(MaterialPageRoute(
