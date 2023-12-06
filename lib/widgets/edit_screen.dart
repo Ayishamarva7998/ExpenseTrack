@@ -6,13 +6,13 @@ import 'package:splitwise_app/model/expense/expenselist_model.dart';
 import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
 
-class editData extends StatefulWidget {
+class EditData extends StatefulWidget {
   final String description;
   final String amount;
 
   int index;
 
-  editData({
+  EditData({
     super.key,
     required this.description,
     required this.amount,
@@ -20,30 +20,30 @@ class editData extends StatefulWidget {
   });
 
   @override
-  State<editData> createState() => _UpdateStudentState();
+  State<EditData> createState() => _UpdateStudentState();
 }
 
-class _UpdateStudentState extends State<editData> {
-  TextEditingController description = TextEditingController();
-  TextEditingController amount = TextEditingController();
+class _UpdateStudentState extends State<EditData> {
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
   File? selectImage;
   final selectController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    description = TextEditingController(text: widget.description);
-    amount = TextEditingController(text: widget.amount);
+    descriptionController = TextEditingController(text: widget.description);
+    amountController = TextEditingController(text: widget.amount);
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 15, 132, 116),
+        backgroundColor: Color.fromARGB(255, 42, 120, 114),
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 22, 140, 124),
-          title: Text('Done'),
+          backgroundColor: Colors.teal,
+          title: Text('Edit Expense'),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -57,20 +57,23 @@ class _UpdateStudentState extends State<editData> {
                       backgroundImage:
                           selectImage != null ? FileImage(selectImage!) : null,
                     ),
+                    const SizedBox(height: 20),
                     Container(
                       height: 80,
                       width: 320,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: TextFormField(
-                          controller: description,
+                          controller: descriptionController,
+                          style: TextStyle(color: Colors.black),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'edit your  expense',
+                            hintText: 'Edit your expense',
+                            hintStyle: TextStyle(color: Colors.grey),
                           ),
                         ),
                       ),
@@ -87,19 +90,21 @@ class _UpdateStudentState extends State<editData> {
                       width: 320,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: TextFormField(
-                          controller: amount,
+                          controller: amountController,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
                           keyboardType: TextInputType.number,
+                          style: TextStyle(color: Colors.black),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'edit  amount',
+                            hintText: 'Edit amount',
+                            hintStyle: TextStyle(color: Colors.grey),
                           ),
                         ),
                       ),
@@ -117,7 +122,7 @@ class _UpdateStudentState extends State<editData> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
+                        primary: Colors.white,
                       ),
                       child: const Text(
                         "Done",
@@ -134,7 +139,7 @@ class _UpdateStudentState extends State<editData> {
     );
   }
 
-  bottomsheet(BuildContext context) {
+  bottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -147,7 +152,7 @@ class _UpdateStudentState extends State<editData> {
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "choose your daily routine",
+                  "Choose your daily routine",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -183,7 +188,7 @@ class _UpdateStudentState extends State<editData> {
                             Icon(Icons.person),
                             SizedBox(width: 10),
                             Text(
-                              'create your own habit',
+                              'Create your own habit',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -214,7 +219,7 @@ class _UpdateStudentState extends State<editData> {
                             Icon(Icons.task),
                             SizedBox(width: 10),
                             Text(
-                              'create your own Task',
+                              'Create your own Task',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -235,19 +240,19 @@ class _UpdateStudentState extends State<editData> {
   }
 
   Future<void> update() async {
-    final editedDescriptioname = description.text.trim();
-    final editedAmount = amount.text.trim();
+    final editedDescription = descriptionController.text.trim();
+    final editedAmount = amountController.text.trim();
 
-    if (editedDescriptioname.isEmpty || editedAmount.isEmpty) {
+    if (editedDescription.isEmpty || editedAmount.isEmpty) {
       return;
     } else {
       final updated = ExpenseList(
-          description: editedDescriptioname, amount: editedAmount, image: '');
+          description: editedDescription, amount: editedAmount, image: '');
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         margin: EdgeInsets.all(10),
         backgroundColor: Colors.grey,
         behavior: SnackBarBehavior.floating,
-        content: Text("updated successfully"),
+        content: Text("Updated successfully"),
       ));
       editExpense(widget.index, updated);
       Navigator.of(context)

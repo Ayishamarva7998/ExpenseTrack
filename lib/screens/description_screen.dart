@@ -213,7 +213,7 @@ class _FriendsscreenState extends State<Descriptionscreen> {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
-                                        builder: (context) => editData(
+                                        builder: (context) => EditData(
                                           description: data.description,
                                           amount: data.amount,
                                           index: index,
