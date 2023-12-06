@@ -20,6 +20,16 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
 
     
    }
+   void editExpense(index,ExpenseList value ) async {
+  final expenseDB = await Hive.openBox<ExpenseList>('expense_db');
+  expenseListNotifier.value.clear();
+  expenseListNotifier.value.addAll(expenseDB.values);
+  expenseListNotifier.notifyListeners();
+  expenseDB.putAt(index, value);
+  getAllexpense();
+} 
+  
+
 
    Future<void> deleteExpense(int index) async {
   final expenseDB = await Hive.openBox<ExpenseList>('expense_db');
@@ -28,13 +38,20 @@ ValueNotifier<List<ExpenseList>> expenseListNotifier =ValueNotifier([]);
  }
  // total amount
 
-     double total( expense){
-    double totalamount = 0;
-    for(var expenses in expense){
-      totalamount+=double.parse(expenses.amount);
+    double total(List<ExpenseList> expenseList) {
+  double totalamount = 0;
+  for (var expense in expenseList) {
+    if (expense.amount != null && expense.amount.isNotEmpty) {
+      try {
+        totalamount += double.parse(expense.amount);
+      } catch (e) {
+        print('Error parsing amount: ${expense.amount}');
+      }
     }
-    return totalamount;
   }
+  return totalamount;
+}
+
   
 //chart calcultion
 

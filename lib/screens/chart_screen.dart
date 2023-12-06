@@ -14,7 +14,7 @@ class chart_screen extends StatefulWidget {
 class _chartState extends State<chart_screen> {
   @override
   Widget build(BuildContext context) {
-    List foods = expenseListNotifier.value;
+    List expensedata = expenseListNotifier.value;
     return DefaultTabController(
       initialIndex: 0,
       length: 1,
@@ -27,7 +27,7 @@ class _chartState extends State<chart_screen> {
           ),
         ),
         body: TabBarView(
-          children: [chartt(expense: foods)],
+          children: [chartt(expense: expensedata)],
         ),
       ),
     );
@@ -39,17 +39,15 @@ Widget chartt({required expense}) {
     valueListenable: expenseListNotifier,
     builder: (context, value, child) {
       if (expense.isEmpty) {
-       
         return Center(
           child: Lottie.asset(
-            'assets/chart.json', 
+            'assets/chart.json',
             width: 500,
             height: 200,
             fit: BoxFit.cover,
           ),
         );
       } else {
-       
         return SizedBox(
           height: 500,
           child: PieChart(
@@ -66,7 +64,6 @@ Widget chartt({required expense}) {
                     badgePositionPercentageOffset: 1.1,
                     titlePositionPercentageOffset: .4,
                     color: getRandomColor(),
-
                     value: percentage,
                     title: ''' ${cost.toStringAsFixed(2)}
       (${percentage.toStringAsFixed(2)}%)

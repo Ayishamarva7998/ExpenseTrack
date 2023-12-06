@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:splitwise_app/screens/logout_screen.dart';
+import 'package:splitwise_app/screens/restart_screen.dart';
 
 import 'package:splitwise_app/screens/settings/about.dart';
 import 'package:splitwise_app/screens/settings/terms.dart';
@@ -49,16 +51,24 @@ class Settings extends StatelessWidget {
           SizedBox(height: 20,),
            Material(
             elevation: 2,
-            child: Container(height: 60,width: 360,
-            child: const Center(
-              child: ListTile(leading: Icon(Icons.restart_alt),title: Text("Restart"),
-              trailing: Icon(Icons.arrow_forward_ios),),
-            ),),
+            child: GestureDetector(onTap: () {
+             resetDB(context);
+            },
+              child: Container(height: 60,width: 360,
+              child: const Center(
+                child: ListTile(leading: Icon(Icons.restart_alt),title: Text("Restart"),
+                trailing: Icon(Icons.arrow_forward_ios),),
+              ),),
+            ),
           ),
           SizedBox(height: 40,),
-          Container(height:60,width: 360,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:Color.fromARGB(255, 92, 172, 162),),
-          child: Align(child: Text('logout')),
+          GestureDetector(onTap: () {
+            exitpopup(context);
+          },
+            child: Container(height:60,width: 360,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:Color.fromARGB(255, 92, 172, 162),),
+            child: Align(child: Text('logout')),
+            ),
           )
           ],
         

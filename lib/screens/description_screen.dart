@@ -13,18 +13,16 @@ class Descriptionscreen extends StatefulWidget {
   Descriptionscreen({Key? key, required this.expense}) : super(key: key);
 
   @override
-  State< Descriptionscreen> createState() => _FriendsscreenState();
+  State<Descriptionscreen> createState() => _FriendsscreenState();
 }
 
-class _FriendsscreenState extends State< Descriptionscreen> {
+class _FriendsscreenState extends State<Descriptionscreen> {
   List contactList = [];
   String _search = '';
   List<ExpenseList> filteredExpense = [];
   List<ExpenseList> details = [];
   double totalamount = total(expenseListNotifier.value);
   DateTime selectedDate = DateTime.now();
- 
-  
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -39,9 +37,6 @@ class _FriendsscreenState extends State< Descriptionscreen> {
       });
     }
   }
- 
-
-  
 
   @override
   void initState() {
@@ -106,9 +101,11 @@ class _FriendsscreenState extends State< Descriptionscreen> {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => bottombar(),
-                ));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => bottombar(),
+                  ),
+                );
               },
               icon: const Icon(
                 Icons.arrow_back,
@@ -133,7 +130,6 @@ class _FriendsscreenState extends State< Descriptionscreen> {
         ),
         body: Column(
           children: [
-           
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
               child: TextFormField(
@@ -169,7 +165,6 @@ class _FriendsscreenState extends State< Descriptionscreen> {
             const SizedBox(
               height: 30,
             ),
-           
             Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -193,25 +188,50 @@ class _FriendsscreenState extends State< Descriptionscreen> {
                         itemBuilder: (ctx, index) {
                           final data = list[index];
                           return ListTile(
-                            leading: CircleAvatar(radius: 50,backgroundImage: 
-                            data.image !=null
-                            ? FileImage(File(data.image!))
-                            :AssetImage('assets/circleavatar.png')as ImageProvider,),
+                            leading: CircleAvatar(
+                              radius: 50,
+                              backgroundImage: data.image != null
+                                  ? FileImage(File(data.image!))
+                                  : null,
+                              child: Container(
+                                width: 55,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    image: const DecorationImage(
+                                      image:
+                                          AssetImage('assets/circleavatar.png'),
+                                      fit: BoxFit.cover,
+                                    )),
+                              ),
+                            ),
                             title: Text(data.description),
-                            subtitle: Text(data.amount),
+                            subtitle: Text(data.amount.toString()),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                
-                             
-                                IconButton(onPressed: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditContacts(description: data.description, amount: data.amount, index: index),));
-                                }, icon: Icon(Icons.edit)),
-                                
                                 IconButton(
-                                    onPressed: () {
-                                      deleteExpense(index);
-                                    },icon: Image.asset("assets/delete.png",height: 25,),),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => editData(
+                                          description: data.description,
+                                          amount: data.amount,
+                                          index: index,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  icon: Icon(Icons.edit),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    deleteExpense(index);
+                                  },
+                                  icon: Image.asset(
+                                    "assets/delete.png",
+                                    height: 25,
+                                  ),
+                                ),
                               ],
                             ),
                           );

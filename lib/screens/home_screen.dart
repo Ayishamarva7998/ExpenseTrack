@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:splitwise_app/widgets/adddexpense_screen.dart';
-import 'package:splitwise_app/widgets/addgroup_screen.dart';
+
 
 
 class Homescreen extends StatelessWidget {

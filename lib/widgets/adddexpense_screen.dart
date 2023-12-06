@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,12 +7,8 @@ import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
 import 'package:image_picker/image_picker.dart';
 
-
-
 class Addexpense extends StatefulWidget {
-  Addexpense({
-    Key? key,c
-  }) : super(key: key);
+  Addexpense({Key? key, c}) : super(key: key);
 
   @override
   State<Addexpense> createState() => _AddexpenseState();
@@ -23,10 +18,9 @@ class _AddexpenseState extends State<Addexpense> {
   final _formKey = GlobalKey<FormState>();
   final _descriptionController = TextEditingController();
   final _amountController = TextEditingController();
- 
-  File ? _selectImage;
-  final _selectController = TextEditingController();
 
+  File? _selectImage;
+  final _selectController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,14 +61,11 @@ class _AddexpenseState extends State<Addexpense> {
                 child: CircleAvatar(
                   radius: 50,
                   backgroundColor: Color.fromARGB(255, 22, 140, 124),
-                  backgroundImage: _selectImage!=null 
-                ? FileImage(_selectImage!)
-                :AssetImage("assets/circleavatar.png")as ImageProvider,
-                
+                  backgroundImage: _selectImage != null
+                      ? FileImage(_selectImage!)
+                      : AssetImage("assets/circleavatar.png") as ImageProvider,
                 ),
               ),
-             
-              
               const SizedBox(height: 100),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -123,14 +114,12 @@ class _AddexpenseState extends State<Addexpense> {
                       },
                     ),
                     SizedBox(height: 20),
-                   
                     const SizedBox(
                       height: 40,
                     ),
                     GestureDetector(
                       onTap: () {
                         onAddExpenseButtonClicked(context);
-                     
                       },
                       child: Container(
                         height: 60,
@@ -158,7 +147,6 @@ class _AddexpenseState extends State<Addexpense> {
       ),
     );
   }
-  
 
   Future<void> onAddExpenseButtonClicked(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
@@ -170,27 +158,26 @@ class _AddexpenseState extends State<Addexpense> {
         description: _description,
         amount: _amount,
         image: _selectImage?.path,
-       
-      
       );
-        _descriptionController.clear();
-        _amountController.clear();
+      _descriptionController.clear();
+      _amountController.clear();
       addExpense(_expense);
 
-       Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => Descriptionscreen(expense: ExpenseList(description: '', amount: '', image: '')),
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => Descriptionscreen(
+            expense: ExpenseList(description: '', amount: '', image: '')),
       ));
     }
   }
-Future<void> pickedImage() async {
-  final picker = ImagePicker();
-  final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-  if (pickedImage != null) {
-    final imageFile = File(pickedImage.path);
-    setState(() {
-      _selectImage = imageFile;
-    });
+
+  Future<void> pickedImage() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      final imageFile = File(pickedImage.path);
+      setState(() {
+        _selectImage = imageFile;
+      });
+    }
   }
 }
-
- }

@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
-
 import 'package:splitwise_app/screens/chart_screen.dart';
 import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/screens/home_screen.dart';

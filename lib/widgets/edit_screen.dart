@@ -1,17 +1,18 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:splitwise_app/functions/expense_fn.dart';
 import 'package:splitwise_app/model/expense/expenselist_model.dart';
 import 'package:splitwise_app/screens/description_screen.dart';
 import 'package:splitwise_app/widgets/bottombar.dart';
-import 'package:splitwise_app/functions/contactlist_fn.dart';
 
-
-
-class EditContacts extends StatefulWidget {
+class editData extends StatefulWidget {
   final String description;
   final String amount;
+
   int index;
 
-  EditContacts({
+  editData({
     super.key,
     required this.description,
     required this.amount,
@@ -19,12 +20,14 @@ class EditContacts extends StatefulWidget {
   });
 
   @override
-  State<EditContacts> createState() => _UpdateStudentState();
+  State<editData> createState() => _UpdateStudentState();
 }
 
-class _UpdateStudentState extends State<EditContacts> {
+class _UpdateStudentState extends State<editData> {
   TextEditingController description = TextEditingController();
   TextEditingController amount = TextEditingController();
+  File? selectImage;
+  final selectController = TextEditingController();
 
   @override
   void initState() {
@@ -37,87 +40,97 @@ class _UpdateStudentState extends State<EditContacts> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color.fromARGB(255, 15, 132, 116),
-          appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 22, 140, 124),
-            title: Text('Done'),
+        backgroundColor: Color.fromARGB(255, 15, 132, 116),
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 22, 140, 124),
+          title: Text('Done'),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage:
+                          selectImage != null ? FileImage(selectImage!) : null,
+                    ),
+                    Container(
+                      height: 80,
+                      width: 320,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: TextFormField(
+                          controller: description,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'edit your  expense',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 80,
+                      width: 320,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: TextFormField(
+                          controller: amount,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'edit  amount',
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          update();
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                      child: const Text(
+                        "Done",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 80,
-                        width: 320,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: TextFormField(
-                            controller: description,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'edit your  expense',
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 80,
-                        width: 320,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: TextFormField(
-                            controller: amount,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'edit  description',
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            update();
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                        ),
-                        child: const Text(
-                          "Done",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )),
+        ),
+      ),
     );
   }
 
@@ -151,7 +164,10 @@ class _UpdateStudentState extends State<EditContacts> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (ctx) => Descriptionscreen(expense: ExpenseList(description: '', amount: '' ,image: ''),)),
+                              builder: (ctx) => Descriptionscreen(
+                                    expense: ExpenseList(
+                                        description: '', amount: '', image: ''),
+                                  )),
                         );
                       },
                       child: Container(
@@ -199,7 +215,7 @@ class _UpdateStudentState extends State<EditContacts> {
                             SizedBox(width: 10),
                             Text(
                               'create your own Task',
-                              style: TextStyle( 
+                              style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -225,8 +241,8 @@ class _UpdateStudentState extends State<EditContacts> {
     if (editedDescriptioname.isEmpty || editedAmount.isEmpty) {
       return;
     } else {
-      final updated =
-          ExpenseList(description: editedDescriptioname, amount:editedAmount,image: '');
+      final updated = ExpenseList(
+          description: editedDescriptioname, amount: editedAmount, image: '');
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         margin: EdgeInsets.all(10),
         backgroundColor: Colors.grey,
