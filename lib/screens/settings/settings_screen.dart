@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:splitwise_app/screens/logout_screen.dart';
-import 'package:splitwise_app/screens/restart_screen.dart';
+import 'package:splitwise_app/widgets/logout_screen.dart';
+import 'package:splitwise_app/widgets/restart_screen.dart';
 
 import 'package:splitwise_app/screens/settings/about.dart';
 import 'package:splitwise_app/screens/settings/terms.dart';
