@@ -254,7 +254,7 @@ class _UpdateStudentState extends State<EditData> {
         behavior: SnackBarBehavior.floating,
         content: Text("Updated successfully"),
       ));
-      editExpense(widget.index, updated);
+       editExpense(widget.index, updated);
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => bottombar()));
     }

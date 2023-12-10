@@ -49,7 +49,7 @@ Widget chartt({required expense}) {
         );
       } else {
         return SizedBox(
-          height: 500,
+          height: 500, 
           child: PieChart(
             PieChartData(
               sections: List.generate(
